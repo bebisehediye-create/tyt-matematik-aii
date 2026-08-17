@@ -1,0 +1,3181 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TYT Matematik — Kapsamlı Konu Anlatımlı Rehber</title>
+<meta name="description" content="TYT Matematik için 14 ünite ve 129 konu başlığında tanım, formül ve çözümlü örneklerle hazırlanmış kapsamlı, ücretsiz konu anlatımlı çalışma rehberi.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+  :root{
+    --ink:#132A3A;
+    --ink-2:#0E2130;
+    --ink-soft:#3C5468;
+    --paper:#F7F8F5;
+    --paper-card:#FFFFFF;
+    --line:#DDE3DE;
+    --gold:#B8862E;      /* accent on dark surfaces (AA on --ink) */
+    --gold-ink:#8A5A12;  /* accent for text on light surfaces (AA on white/paper/cream) */
+    --gold-soft:#F3E6CB;
+    --pine:#1F5C4F;
+    --pine-soft:#E4F0EB;
+    --rust:#A44A3F;
+    --rust-soft:#F6E4E0;
+    --shadow: 0 1px 2px rgba(19,42,58,.06), 0 8px 24px rgba(19,42,58,.05);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+  }
+  ::selection{background:var(--gold-soft);}
+
+  h1,h2,h3,h4{font-family:'Fraunces',serif; color:var(--ink); margin:0 0 .4em;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-ink);
+    font-weight:600;
+  }
+
+  /* ---------- accessibility: skip link, focus, motion ---------- */
+  .skip-link{
+    position:absolute; left:14px; top:-56px; z-index:100;
+    background:var(--ink); color:#fff; padding:12px 18px; border-radius:8px;
+    font-family:'Inter',sans-serif; font-weight:600; font-size:.85rem; text-decoration:none;
+    transition:top .15s ease;
+  }
+  .skip-link:focus{top:14px;}
+  a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible{
+    outline:2px solid var(--gold-ink); outline-offset:2px; border-radius:4px;
+  }
+  .unit-topics a:focus-visible{outline-offset:-2px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *, *::before, *::after{
+      animation-duration:.01ms !important; animation-iteration-count:1 !important;
+      transition-duration:.01ms !important; scroll-behavior:auto !important;
+    }
+  }
+
+  /* ---------- reading progress ---------- */
+  .progress-bar{position:fixed; top:0; left:0; height:3px; width:0%; background:var(--gold); z-index:70; pointer-events:none;}
+
+  /* ---------- layout shell ---------- */
+  .shell{display:flex; max-width:1400px; margin:0 auto;}
+  nav.toc{
+    position:sticky; top:0; align-self:flex-start;
+    width:300px; min-width:300px; height:100vh; overflow-y:auto;
+    background:var(--paper-card); border-right:1px solid var(--line);
+    padding:22px 18px 60px;
+  }
+  nav.toc::-webkit-scrollbar{width:8px;}
+  nav.toc::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px;}
+  .toc-brand{display:flex; align-items:center; gap:10px; margin-bottom:16px; padding-bottom:16px; border-bottom:2px solid var(--ink);}
+  .toc-brand .mark{
+    width:34px; height:34px; border-radius:8px; background:var(--ink);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:700; font-size:1.1rem;
+  }
+  .toc-brand .name{font-family:'Fraunces',serif; font-weight:600; font-size:1rem; line-height:1.1;}
+  .toc-brand .sub{font-family:'JetBrains Mono',monospace; font-size:.65rem; color:var(--ink-soft); letter-spacing:.06em;}
+
+  .toc-search{
+    width:100%; margin:2px 0 12px; padding:9px 12px;
+    border:1px solid var(--line); border-radius:8px; background:var(--paper);
+    font-family:'Inter',sans-serif; font-size:.82rem; color:var(--ink);
+  }
+  .toc-search::placeholder{color:#63737F;}
+  .toc-empty{display:none; font-size:.78rem; color:var(--ink-soft); padding:10px 6px;}
+  .toc-empty.show{display:block;}
+
+  .quiz-toggle{
+    display:flex; align-items:center; gap:8px; margin:0 0 16px; padding:9px 10px;
+    background:var(--pine-soft); border-radius:8px; cursor:pointer;
+    font-family:'Inter',sans-serif; font-size:.76rem; color:var(--pine); font-weight:600; line-height:1.3;
+  }
+  .quiz-toggle input{accent-color:var(--pine); width:15px; height:15px; flex:none; cursor:pointer;}
+
+  .unit-block{margin-bottom:4px;}
+  .unit-block.no-match{display:none;}
+  .unit-toggle{
+    display:flex; align-items:baseline; gap:8px; width:100%; text-align:left;
+    background:none; border:none; cursor:pointer; padding:8px 6px; border-radius:6px;
+    font-family:'Inter',sans-serif; color:var(--ink); font-weight:600; font-size:.83rem;
+  }
+  .unit-toggle:hover{background:var(--pine-soft);}
+  .unit-toggle .num{font-family:'JetBrains Mono',monospace; color:var(--pine); font-size:.75rem;}
+  .unit-topics{display:none; padding-left:14px; margin:2px 0 10px; border-left:1px solid var(--line);}
+  .unit-topics.open{display:block;}
+  .unit-topics a{
+    display:block; font-size:.78rem; color:var(--ink-soft); text-decoration:none;
+    padding:5px 8px; border-radius:5px; line-height:1.35;
+  }
+  .unit-topics a:hover{background:var(--gold-soft); color:var(--ink);}
+  .unit-topics a.no-match{display:none;}
+  .unit-topics a.active{background:var(--ink); color:#fff;}
+  .unit-topics a.active .n{color:var(--gold);}
+  .unit-topics a .n{font-family:'JetBrains Mono',monospace; color:var(--gold-ink); margin-right:4px;}
+
+  main{flex:1; min-width:0;}
+
+  /* ---------- cover ---------- */
+  .cover{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding:60px 80px; position:relative; overflow:hidden;
+    background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+    color:#fff;
+  }
+  .cover::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0, rgba(255,255,255,.035) 1px, transparent 1px, transparent 64px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0, rgba(255,255,255,.035) 1px, transparent 1px, transparent 64px);
+    pointer-events:none;
+  }
+  .cover .kicker{font-family:'JetBrains Mono',monospace; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-size:.8rem; margin-bottom:22px; position:relative;}
+  .cover h1{color:#fff; font-size:clamp(2.6rem, 6vw, 5.2rem); line-height:.98; margin:0 0 18px; font-weight:600; position:relative; max-width:11ch;}
+  .cover h1 em{font-style:italic; color:var(--gold); font-weight:500;}
+  .cover .desc{font-size:1.15rem; color:#C7D2D9; max-width:46ch; margin-bottom:44px; position:relative;}
+  .cover .stats{display:flex; gap:40px; flex-wrap:wrap; position:relative;}
+  .cover .stat b{display:block; font-family:'Fraunces',serif; font-size:2.2rem; color:#fff; font-weight:600;}
+  .cover .stat span{font-family:'JetBrains Mono',monospace; font-size:.7rem; color:var(--gold); letter-spacing:.08em; text-transform:uppercase;}
+  .cover .foot{position:absolute; bottom:40px; left:80px; right:80px; display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:.72rem; color:#8EA0AF; border-top:1px solid rgba(255,255,255,.15); padding-top:16px;}
+
+  /* ---------- intro / how to use ---------- */
+  .intro{padding:64px 80px; max-width:900px;}
+  .intro p{color:var(--ink-soft); font-size:1.02rem;}
+  .legend{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:28px;}
+  .legend .item{display:flex; gap:12px; padding:14px; background:var(--paper-card); border:1px solid var(--line); border-radius:10px; transition:box-shadow .15s ease, transform .15s ease;}
+  .legend .item:hover{box-shadow:var(--shadow); transform:translateY(-2px);}
+  .legend .swatch{width:30px; height:30px; border-radius:8px; flex:none; display:flex; align-items:center; justify-content:center; color:#fff; font-size:.85rem; font-weight:700;}
+  .legend .txt b{display:block; font-size:.85rem;}
+  .legend .txt span{font-size:.8rem; color:var(--ink-soft);}
+
+  /* ---------- unit divider (big section break) ---------- */
+  .unit-divider{
+    margin:0; padding:70px 80px; position:relative; overflow:hidden;
+    background:var(--pine); color:#fff;
+    page-break-before:always;
+  }
+  .unit-divider::before{
+    content:"";
+    position:absolute; inset:0; z-index:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 56px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 56px);
+    pointer-events:none;
+  }
+  .unit-divider .u-eyebrow{position:relative; z-index:1; font-family:'JetBrains Mono',monospace; letter-spacing:.18em; text-transform:uppercase; font-size:.75rem; color:var(--pine-soft); opacity:.85;}
+  .unit-divider .u-formula{
+    position:absolute; z-index:0; right:52px; top:32px; max-width:62%;
+    text-align:right; pointer-events:none; white-space:nowrap; overflow:hidden;
+    font-family:'Fraunces',serif; font-weight:600; line-height:1;
+    font-size:clamp(1.8rem, 4.4vw, 3.6rem);
+    color:rgba(255,255,255,.16);
+  }
+  .unit-divider h2{position:relative; z-index:1; color:#fff; font-size:clamp(1.8rem, 4vw, 2.6rem); margin:10px 0 14px; max-width:22ch;}
+  .unit-divider p{position:relative; z-index:1; color:#DCEAE4; max-width:60ch; font-size:1.02rem; margin:0;}
+
+  /* ---------- topic card ---------- */
+  .topics-wrap{padding:10px 80px 30px;}
+  .topic{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:14px;
+    margin:26px 0; padding:32px 38px; box-shadow:var(--shadow);
+    scroll-margin-top:20px;
+  }
+  .topic-head{display:flex; align-items:baseline; gap:14px; margin-bottom:16px; padding-bottom:14px; border-bottom:2px solid var(--ink);}
+  .topic-head .t-num{font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--gold-ink); font-size:1.1rem;}
+  .topic-head h3{margin:0; font-size:1.5rem;}
+  .topic ul{margin:0 0 8px; padding-left:20px;}
+  .topic li{margin-bottom:7px; color:var(--ink);}
+  .topic p{margin:0 0 10px;}
+
+  .box{border-radius:10px; padding:16px 20px; margin:14px 0;}
+  .box .flabel{display:flex; align-items:center; gap:7px; margin-bottom:8px;}
+  .box .flabel::before{
+    display:inline-flex; align-items:center; justify-content:center; flex:none;
+    width:16px; height:16px; border-radius:5px; line-height:1;
+    font-family:'Fraunces',serif; font-style:italic; font-size:.68rem; font-weight:700; color:#fff;
+  }
+  .box.formula{background:var(--pine-soft); border:1px solid #BFDCD1;}
+  .box.formula .flabel{font-family:'JetBrains Mono',monospace; font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--pine); font-weight:700;}
+  .box.formula .flabel::before{content:"Σ"; background:var(--pine);}
+  .box.warn{background:var(--rust-soft); border:1px solid #E7C3BA;}
+  .box.warn .flabel{font-family:'JetBrains Mono',monospace; font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--rust); font-weight:700;}
+  .box.warn .flabel::before{content:"!"; background:var(--rust);}
+  .box.example{background:#F4F2EA; border:1px dashed #CDBE95;}
+  .box.example .flabel{font-family:'JetBrains Mono',monospace; font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-ink); font-weight:700;}
+  .box.example .flabel::before{content:"?"; background:var(--gold-ink);}
+  .box.solution{background:#EFF3F6; border-left:3px solid var(--ink); margin-top:10px; position:relative;}
+  .box.solution .flabel{font-family:'JetBrains Mono',monospace; font-size:.65rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); font-weight:700;}
+  .box.solution .flabel::before{content:"✓"; background:var(--ink-soft);}
+  .katex-display{margin:.6em 0 !important; overflow-x:auto; overflow-y:hidden;}
+
+  /* ---------- kendini sına modu ---------- */
+  body.quiz-mode .box.solution:not(.revealed){cursor:pointer; overflow:hidden; min-height:54px; border-left-style:dashed;}
+  body.quiz-mode .box.solution:not(.revealed) > *{opacity:0;}
+  body.quiz-mode .box.solution:not(.revealed)::after{
+    content:"Çözümü görmek için dokun"; position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:0 16px;
+    font-family:'Inter',sans-serif; font-weight:600; font-size:.8rem; color:var(--ink-soft);
+    background:repeating-linear-gradient(135deg, #E9EDEF, #E9EDEF 9px, #DEE4E7 9px, #DEE4E7 18px);
+  }
+  body.quiz-mode .box.solution.revealed{animation:reveal-solution .2s ease;}
+  body.quiz-mode .box.solution:focus-visible{outline:2px solid var(--pine); outline-offset:2px;}
+  @keyframes reveal-solution{ from{opacity:.3;} to{opacity:1;} }
+
+  /* ---------- comparison table (ÖSYM analiz raporu) ---------- */
+  .cmp-wrap{overflow-x:auto; margin:14px 0; border-radius:10px; border:1px solid var(--line); box-shadow:var(--shadow);}
+  table.cmp-table{width:100%; border-collapse:collapse; font-size:.92rem; background:var(--paper-card);}
+  .cmp-table th, .cmp-table td{padding:13px 16px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; line-height:1.5;}
+  .cmp-table thead th{background:var(--ink); color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:.74rem; text-transform:uppercase; letter-spacing:.06em; border-bottom:none;}
+  .cmp-table tbody th{background:var(--pine-soft); color:var(--pine); font-weight:700; white-space:nowrap; font-size:.85rem;}
+  .cmp-table tbody tr:last-child th, .cmp-table tbody tr:last-child td{border-bottom:none;}
+  .cmp-table tbody tr:nth-child(even) td{background:#FBFAF6;}
+  .cmp-table tbody tr:hover td{background:var(--pine-soft);}
+
+  footer.doc-end{padding:80px; text-align:center; background:linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%); color:#9FB2C0;}
+  footer.doc-end h3{color:#fff;}
+
+  /* ---------- back to top ---------- */
+  .back-to-top{
+    position:fixed; right:22px; bottom:22px; z-index:45;
+    width:46px; height:46px; border-radius:50%; border:none;
+    background:var(--ink); color:#fff; font-size:1.15rem; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);
+    opacity:0; visibility:hidden; transform:translateY(8px);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s, background .15s ease;
+  }
+  .back-to-top.visible{opacity:1; visibility:visible; transform:translateY(0);}
+  .back-to-top:hover{background:var(--pine);}
+
+  /* ---------- print ---------- */
+  @media print{
+    .skip-link, .progress-bar, .back-to-top, .menu-btn{display:none !important;}
+    nav.toc{display:none;}
+    .shell{display:block; max-width:none;}
+    .cover{min-height:auto;}
+    .topic{box-shadow:none; break-inside:avoid;}
+    a{color:inherit; text-decoration:none;}
+    body.quiz-mode .box.solution:not(.revealed)::after{display:none;}
+    body.quiz-mode .box.solution:not(.revealed) > *{opacity:1;}
+  }
+  @media (max-width:900px){
+    nav.toc{position:fixed; left:-320px; top:0; bottom:0; z-index:40; transition:left .25s; box-shadow:0 0 0 2000px rgba(0,0,0,0);}
+    nav.toc.open{left:0; box-shadow:0 0 40px rgba(0,0,0,.25);}
+    .menu-btn{display:flex !important;}
+    .cover, .intro, .unit-divider, .topics-wrap{padding-left:24px; padding-right:24px;}
+    .topic{padding:22px 20px;}
+    .unit-divider .u-formula{font-size:1.5rem; top:20px; right:24px; max-width:66%; opacity:.6;}
+    .back-to-top{right:16px; bottom:16px;}
+  }
+  .menu-btn{
+    display:none; position:fixed; top:16px; left:16px; z-index:50;
+    width:44px; height:44px; border-radius:10px; background:var(--ink); color:#fff;
+    border:none; align-items:center; justify-content:center; cursor:pointer; font-size:1.2rem;
+  }
+
+  /* =========================================================
+     AI SORU ÜRETİCİ — mevcut tasarım diliyle uyumlu ek stiller
+     ========================================================= */
+  .ai-fab{
+    position:fixed; right:22px; bottom:84px; z-index:55;
+    display:flex; align-items:center; gap:9px; border:none; cursor:pointer;
+    padding:13px 20px 13px 15px; border-radius:999px;
+    background:var(--ink); color:#fff; box-shadow:var(--shadow);
+    font-family:'Inter',sans-serif; font-weight:600; font-size:.85rem;
+    transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .ai-fab:hover{background:var(--pine); transform:translateY(-2px); box-shadow:0 6px 18px rgba(19,42,58,.2), 0 14px 32px rgba(19,42,58,.14);}
+  .ai-fab .ico{
+    display:flex; align-items:center; justify-content:center; flex:none;
+    width:22px; height:22px; border-radius:50%; background:var(--gold); color:var(--ink); font-size:.78rem;
+  }
+  @media (max-width:900px){
+    .ai-fab{right:16px; bottom:78px; padding:11px 16px 11px 11px; font-size:.78rem;}
+    .ai-fab .lbl{display:none;}
+  }
+
+  .ai-modal-overlay{
+    display:none; position:fixed; inset:0; z-index:90; overflow-y:auto;
+    background:rgba(14,33,48,.5); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    padding:24px; align-items:center; justify-content:center;
+  }
+  .ai-modal-overlay.open{display:flex;}
+  .ai-modal{
+    position:relative; width:100%; max-width:620px; max-height:calc(100vh - 48px); overflow-y:auto;
+    background:var(--paper-card); border-radius:18px; padding:32px 30px 34px;
+    box-shadow:0 20px 60px rgba(14,33,48,.35);
+    animation:ai-modal-in .18s ease;
+  }
+  @keyframes ai-modal-in{ from{opacity:0; transform:translateY(10px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);} }
+  .ai-modal-close{
+    position:absolute; top:16px; right:16px; width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); cursor:pointer;
+    font-size:1rem; display:flex; align-items:center; justify-content:center;
+  }
+  .ai-modal-close:hover{background:var(--rust-soft); color:var(--rust); border-color:#E7C3BA;}
+  .ai-modal-head{padding-right:36px; margin-bottom:14px;}
+  .ai-modal-head h2{font-size:1.45rem; margin-bottom:4px;}
+  .ai-modal-sub{color:var(--ink-soft); font-size:.86rem; margin:0;}
+
+  .ai-topic-chip{
+    display:flex; align-items:center; gap:8px; padding:9px 12px; margin:0 0 16px;
+    background:var(--pine-soft); border-radius:8px;
+    font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--pine); line-height:1.4;
+  }
+  .ai-topic-chip .dot{width:7px; height:7px; border-radius:50%; background:var(--pine); flex:none;}
+  .ai-topic-chip.warn{background:var(--rust-soft); color:var(--rust);}
+  .ai-topic-chip.warn .dot{background:var(--rust);}
+
+  .ai-settings{border:1px solid var(--line); border-radius:10px; margin-bottom:14px; background:var(--paper);}
+  .ai-settings summary{
+    cursor:pointer; list-style:none; padding:12px 14px;
+    font-family:'Inter',sans-serif; font-weight:600; font-size:.82rem; color:var(--ink);
+    display:flex; align-items:center;
+  }
+  .ai-settings summary::-webkit-details-marker{display:none;}
+  .ai-settings summary::after{content:"▾"; color:var(--ink-soft); font-size:.72rem; margin-left:auto;}
+  .ai-settings[open] summary::after{content:"▴";}
+  .ai-settings-state{font-family:'JetBrains Mono',monospace; font-weight:500; font-size:.68rem; color:var(--ink-soft); margin-left:8px;}
+  .ai-settings-state.ok{color:var(--pine);}
+  .ai-settings-body{padding:0 14px 16px;}
+  .ai-field-label{display:block; font-size:.76rem; font-weight:600; color:var(--ink-soft); margin-bottom:6px;}
+  .ai-key-row{display:flex; gap:8px;}
+  .ai-input{
+    flex:1; min-width:0; padding:10px 12px; border:1px solid var(--line); border-radius:8px;
+    background:var(--paper-card); font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--ink);
+  }
+  .ai-key-toggle{
+    flex:none; width:40px; border:1px solid var(--line); border-radius:8px; background:var(--paper-card);
+    cursor:pointer; font-size:.92rem;
+  }
+  .ai-hint-text{font-size:.74rem; color:var(--ink-soft); line-height:1.55; margin:8px 0 12px;}
+  .ai-hint-text a{color:var(--gold-ink);}
+
+  .ai-diff-label{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:7px;}
+  .ai-diff-label .ai-field-label{margin-bottom:0;}
+  .ai-diff-note{font-size:.68rem; color:var(--ink-soft); font-family:'JetBrains Mono',monospace;}
+  .ai-diff-row{
+    display:flex; margin:0 0 16px; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--paper);
+  }
+  .ai-diff-btn{
+    flex:1; border:none; background:transparent; cursor:pointer; padding:10px 6px;
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    border-right:1px solid var(--line); transition:background .15s ease, color .15s ease;
+    font-family:'Inter',sans-serif; color:var(--ink-soft);
+  }
+  .ai-diff-btn:last-child{border-right:none;}
+  .ai-diff-btn:hover{background:var(--paper-card);}
+  .ai-diff-btn .lvl{font-size:.82rem; font-weight:700;}
+  .ai-diff-btn .sub{font-family:'JetBrains Mono',monospace; font-size:.6rem; letter-spacing:.03em; text-transform:uppercase; opacity:.75;}
+  .ai-diff-btn.active{color:#fff;}
+  .ai-diff-btn[data-diff="kolay"].active{background:var(--pine);}
+  .ai-diff-btn[data-diff="orta"].active{background:var(--gold-ink);}
+  .ai-diff-btn[data-diff="zor"].active{background:var(--rust);}
+
+  .ai-btn{font-family:'Inter',sans-serif; font-weight:600; font-size:.83rem; cursor:pointer; border-radius:9px; padding:11px 18px; border:none;}
+  .ai-btn-primary{background:var(--ink); color:#fff; width:100%;}
+  .ai-btn-primary:hover{background:var(--pine);}
+  .ai-btn-primary:disabled{background:#B7C1C8; cursor:progress;}
+  .ai-btn-ghost{background:var(--paper); color:var(--ink); border:1px solid var(--line);}
+  .ai-btn-ghost:hover{background:var(--gold-soft); border-color:var(--gold-soft);}
+
+  .ai-status{margin-top:12px; font-size:.82rem; line-height:1.5;}
+  .ai-status.error{color:var(--rust); background:var(--rust-soft); border-radius:8px; padding:10px 12px;}
+  .ai-status.loading{color:var(--ink-soft); display:flex; align-items:center; gap:8px;}
+  .ai-spin{
+    width:14px; height:14px; border-radius:50%; flex:none;
+    border:2px solid var(--line); border-top-color:var(--pine);
+    animation:ai-spin .7s linear infinite;
+  }
+  @keyframes ai-spin{ to{transform:rotate(360deg);} }
+
+  .ai-output{margin-top:18px;}
+  .ai-block-body{font-size:.92rem; line-height:1.65; color:var(--ink);}
+  .ai-block-body p{margin:0 0 .6em;}
+  .ai-block-body p:last-child{margin-bottom:0;}
+  .ai-reveal-row{display:flex; gap:8px; margin:14px 0; flex-wrap:wrap;}
+  .ai-toggle-btn{flex:1; min-width:150px;}
+
+  .box.ai-question{background:var(--paper); border:1.5px solid var(--gold-ink);}
+  .box.ai-question .flabel{font-family:'JetBrains Mono',monospace; font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-ink); font-weight:700;}
+  .box.ai-question .flabel::before{content:"✦"; background:var(--gold-ink); font-style:normal;}
+  .box.ai-hint{background:var(--gold-soft); border:1px dashed var(--gold-ink);}
+  .box.ai-hint .flabel{font-family:'JetBrains Mono',monospace; font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-ink); font-weight:700;}
+  .box.ai-hint .flabel::before{content:"i"; background:var(--gold-ink); font-style:normal;}
+  .box.ai-solution{background:#EFF3F6; border-left:3px solid var(--ink);}
+  .box.ai-solution .flabel{font-family:'JetBrains Mono',monospace; font-size:.65rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); font-weight:700;}
+  .box.ai-solution .flabel::before{content:"✓"; background:var(--ink-soft); font-style:normal;}
+
+  @media (max-width:560px){
+    .ai-modal{padding:26px 18px 28px; border-radius:14px; max-height:calc(100vh - 32px);}
+    .ai-modal-overlay{padding:16px;}
+    .ai-modal-head h2{font-size:1.25rem;}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">İçeriğe geç</a>
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+<button class="menu-btn" id="menuBtn" aria-label="Konu menüsünü aç/kapat" aria-expanded="false" aria-controls="tocNav">☰</button>
+
+<div class="shell">
+<nav class="toc" id="tocNav" aria-label="İçindekiler">
+  <div class="toc-brand">
+    <div class="mark">T</div>
+    <div>
+      <div class="name">TYT Matematik</div>
+      <div class="sub">KONU REHBERİ</div>
+    </div>
+  </div>
+  <input type="search" id="tocSearch" class="toc-search" placeholder="Konu ara… (örn. EBOB, olasılık)" aria-label="Konu ara">
+  <label class="quiz-toggle"><input type="checkbox" id="quizToggle"> <span>Kendini Sına Modu — çözümler dokununca açılır</span></label>
+  <div id="tocList"></div>
+  <p class="toc-empty" id="tocEmpty">Eşleşen konu bulunamadı.</p>
+</nav>
+
+<main id="main-content" tabindex="-1">
+
+<section class="cover">
+  <div class="kicker">TYT · Temel Yeterlilik Testi</div>
+  <h1>Matematik<br><em>Konu Rehberi</em></h1>
+  <p class="desc">Sayılardan geometriye, 14 ünite ve 129 konu başlığında; tanım, kural, formül ve çözümlü örneklerle hazırlanmış kapsamlı bir çalışma kaynağı.</p>
+  <div class="stats">
+    <div class="stat"><b>14</b><span>Ünite</span></div>
+    <div class="stat"><b>129</b><span>Konu</span></div>
+    <div class="stat"><b>125+</b><span>Çözümlü Örnek</span></div>
+    <div class="stat"><b>1</b><span>ÖSYM Analiz Raporu</span></div>
+  </div>
+  <div class="foot">
+    <span>TYT · MATEMATİK TESTİ</span>
+    <span>KONU ANLATIMLI ÇALIŞMA REHBERİ</span>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="eyebrow">Nasıl kullanılır</div>
+  <h2>Rehberi okumadan önce</h2>
+  <p>Her konu aynı düzende ilerler: önce <b>tanım ve kurallar</b>, ardından <b>formül kutusu</b>, gerekiyorsa bir <b>dikkat</b> uyarısı ve en az bir <b>çözümlü örnek</b>. Soldaki menüden doğrudan istediğin konuya atlayabilir, konu arayabilir ya da sırayla ünite ünite ilerleyebilirsin. Kendini Sına Modu'nu açarsan çözümler sen dokunana kadar gizli kalır. Sayfayı yazdırarak (Ctrl/Cmd+P) PDF olarak da kaydedebilirsin.</p>
+  <div class="legend">
+    <div class="item"><div class="swatch" style="background:var(--pine);">Σ</div><div class="txt"><b>Formül</b><span>Ezberlenmesi gereken kural/formül</span></div></div>
+    <div class="item"><div class="swatch" style="background:var(--rust);">!</div><div class="txt"><b>Dikkat</b><span>Sık yapılan hata / özel durum</span></div></div>
+    <div class="item"><div class="swatch" style="background:var(--gold-ink);">?</div><div class="txt"><b>Örnek</b><span>Çözümlü soru</span></div></div>
+  </div>
+</section>
+
+
+<section class="unit-divider" id="u0">
+  <div class="u-formula" aria-hidden="true">?</div>
+  <div class="u-eyebrow">Rapor · Sınav Formatı Analizi</div>
+  <h2>ÖSYM Soru Tarzı ve Konu Analiz Raporu</h2>
+  <p>129 konuya geçmeden önce, ÖSYM'nin TYT Matematik'te neyi nasıl sorduğunu anlamak; doğru bir çalışma stratejisi kurmanın ilk adımıdır. Bu rapor, sınavın "felsefesini", konu bazlı soru eğilimlerini ve pratik çözüm tekniklerini özetler.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t0-1">
+  <div class="topic-head"><span class="t-num">R1</span><h3>Temel ÖSYM Felsefesi</h3></div>
+  <p>TYT Matematik bölümü, bilginin kendisinden çok, bilginin <b>günlük hayat senaryolarına nasıl uygulandığını</b> ölçen bir yapıdadır. ÖSYM'nin "Yeni Nesil Soru" adını verdiği bu konseptte, okuduğunu anlama, modelleme yapma ve zaman yönetimi sınavın anahtar faktörleridir.</p>
+  <p>2018 sınav sistemi değişikliğinden bu yana "$x$ kaçtır?" şeklindeki doğrudan işlem soruları, yerini problemi adayın kendisinin formüle etmesini gerektiren hikâyelere bırakmıştır. Bu nedenle TYT Matematik, esasında <b>sayısal verilerle yazılmış bir Türkçe paragraf sınavı</b> niteliğindedir.</p>
+  <p><b>Mantığı:</b> Bir sınav, ölçmek istediği beceriyle doğru orantılı sorular sormalıdır (buna <i>ölçme geçerliliği</i> denir). ÖSYM üniversitede ve gerçek hayatta ihtiyaç duyulan şeyin "ezberlenmiş formülü hatırlamak" değil, "karşılaşılan bir duruma matematiği uygulayabilmek" olduğunu varsayar. Bu yüzden soru kökü uzar: uzunluk, adayın önce metni bir modele (denklem, tabloya, orana) çevirmesini zorunlu kılar. İşlem adımı kolay bırakılır çünkü ölçülmek istenen zaten işlem değil, <b>modelleme</b> becerisidir.</p>
+  <div class="box formula">
+    <div class="flabel">Kavramsal Model · Resmî bir ÖSYM formülü değildir</div>
+    <p>Sınav performansını özetleyen basit bir zihinsel çerçeve:</p>
+    $$\text{Doğru Sayısı} \approx \text{Kavramsal Bilgi} \times \text{Okuduğunu Anlama} \times \text{Zaman Yönetimi}$$
+    <p>Çarpımsal ilişki kasıtlıdır: üç bileşenden biri çok zayıfsa (örneğin zaman yönetimi), diğer ikisi güçlü olsa bile sonuç düşük kalır. Çalışma planı bu yüzden yalnızca "konu bilgisi"ne değil, üçüne birden odaklanmalıdır.</p>
+  </div>
+  <div class="box warn">
+    <div class="flabel">Dikkat</div>
+    <p>Bir sorudaki işlem adımı genellikle çok basittir (dört işlem, oran, yüzde); adayı zorlayan kısım işlemin kendisi değil, <b>uzun metni doğru matematiksel modele dökebilmektir</b>. Bu yüzden "matematik zayıfım" hissi çoğu zaman aslında bir okuduğunu anlama sorunudur.</p>
+  </div>
+</article>
+
+<article class="topic" id="t0-2">
+  <div class="topic-head"><span class="t-num">R2</span><h3>Temel Kavramlar ve Sayı Basamakları</h3></div>
+  <p>Bu konularda dört işlem becerisi, kutu/çember içine sayı yerleştirme (sudoku benzeri mantık) ve kurallı sayı tanımlama üzerinden ölçülür. Örneğin, iki basamaklı bir sayının doğrudan çözümlenmesi sorulmaz; bunun yerine "dijital bir saatte arızalı bir ekranın gösterdiği değerler" gibi bir senaryo üzerinden soru kurgulanır.</p>
+  <p><b>Mantığı:</b> Bu sorular esasında bir sayının <i>basamak değeri açılımını</i> sınar. Bir sayıyı "$AB$" gibi tek bir sembol değil, $10A+B$ gibi cebirsel bir ifade olarak görebilmek; hem kutu-bulmaca tipi hem de ileride göreceğiniz bölünebilme kuralları (3'e, 9'a, 11'e bölünme) sorularının ortak temelidir. Basamak değerini cebire çevirebilen bir aday, görünüşte çok farklı iki soru tipini aynı araçla çözer.</p>
+  <div class="box formula">
+    <div class="flabel">Formül · Basamak Değeri Açılımı</div>
+    $$\overline{a_{n-1}a_{n-2}\dots a_1a_0}=a_{n-1}\!\cdot\!10^{n-1}+\dots+a_1\!\cdot\!10+a_0$$
+    <p>İki ve üç basamaklı özel durumlar (en sık kullanılanlar):</p>
+    $$\overline{ab}=10a+b \qquad\qquad \overline{abc}=100a+10b+c$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Yeni Nesil Örnek</div>
+    <p>Arızalı bir dijital saat, yalnızca <b>dakika basamaklarının rakamları toplamı 9 olduğunda</b> doğru görüntü verebilmektedir. Saat tam "09" iken, bu kurala uyan kaç farklı dakika değeri (00–59 arası) ekranda görüntülenebilir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Dakika $\overline{MN}=10M+N$ biçiminde iki basamaklı olsun: onlar basamağı $M\in\{0,\dots,5\}$, birler basamağı $N\in\{0,\dots,9\}$ arasında değişir ve $M+N=9$ olmalıdır. Uygun çiftler: $09,18,27,36,45,54$. Cevap: <b>6 farklı dakika değeri</b>. (Bu tip sorularda önce hangi basamağın <i>sabit</i>, hangisinin <i>bilinmeyen</i> olduğunu ayırt etmek çözümün anahtarıdır.)</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t0-3">
+  <div class="topic-head"><span class="t-num">R3</span><h3>Rasyonel ve Ondalık Sayılar</h3></div>
+  <p>Klasik kesir işlemleri yerine görsellik ön plandadır. Eşit dilimlere ayrılmış pizzalar, seviyeleri işaretlenmiş su şişeleri veya cetvel üzerindeki hatalı ölçümler en popüler soru tipleridir.</p>
+  <p><b>Mantığı:</b> Bu sorular kesri "bölme işlemi" olarak değil, <i>oran/parça-bütün ilişkisi</i> olarak görmenizi ister. Bir şeklin (pizza, şişe, cetvel) dolu/boş veya alınmış/kalan kısmı hep aynı bütüne göre orantılanır. Sabit bir taban alanı (şişe, kap) varsa, <b>yükseklik oranı ile hacim oranı birbirine eşittir</b> — bu, "korunum" mantığının (şekil değişse de miktar değişmez) kesir sorularına yansımasıdır.</p>
+  <div class="box formula">
+    <div class="flabel">Formül · Silindirde Hacim ve Oran</div>
+    $$V=\pi r^2h \qquad\Longrightarrow\qquad \frac{V_{dolu}}{V_{toplam}}=\frac{h_{dolu}}{h_{toplam}}$$
+    <p>(Taban yarıçapı $r$ sabit kaldığı sürece, kısmen dolu bir silindirde hacim oranı doğrudan yükseklik oranına eşittir.)</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Yeni Nesil Örnek</div>
+    <p>Silindir biçiminde, dik duran bir şişede su, yüksekliğin $\dfrac{2}{5}$'i kadardır. Şişe ters çevrildiğinde boş kısım, tabandan itibaren yüksekliğin ne kadarını kaplar?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Şişenin şekli ve toplam hacmi değişmediğinden, boş kısmın hacmi de değişmez: başlangıçta boş kısım yüksekliğin $1-\dfrac25=\dfrac35$'i kadardır. Ters çevrildiğinde bu boşluk yalnızca yer değiştirir; yükseklik oranı yine <b>$\dfrac35$</b> olur. Su miktarı değil, yalnızca boşluğun konumu değişmiştir.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t0-4">
+  <div class="topic-head"><span class="t-num">R4</span><h3>Problemler — TYT'nin Kalbi</h3></div>
+  <p>Sınavın en belirleyici, en çok vakit alan kısmıdır. Sorular genellikle bir paragraf uzunluğundadır.</p>
+  <ul>
+    <li><b>Sayı/Kesir Problemleri:</b> Mağaza kuyrukları, bilet sıraları, bütçe-hesap paylaşımı.</li>
+    <li><b>Yaş Problemleri:</b> Geçmişe veya geleceğe dönük aile albümü senaryoları.</li>
+    <li><b>Hız/Hareket Problemleri:</b> Sabit hızlı araçlar yerine, yolda mola veren, hızını kademeli artıran araçlar veya dijital harita (navigasyon) süre tahminleri.</li>
+    <li><b>Yüzde/Kâr-Zarar:</b> İnternet alışverişlerindeki kargo bedava kampanyaları, enflasyon veya maaş zamları.</li>
+    <li><b>Rutin Olmayan Problemler:</b> Hiçbir formülü olmayan, tamamen o anki duruma göre strateji üretilmesi gereken sayısal mantık oyunları.</li>
+  </ul>
+  <p><b>Mantığı:</b> Görünüşte beş farklı problem türü olsa da hepsi aynı üç adımdan geçer: <b>(1) bilinmeyeni $x$ ile adlandır, (2) metindeki ilişkiyi bir denklem/orana çevir, (3) denklemi çöz ve TYT bağlamında anlamlandır</b> (negatif yaş, kesirli kişi sayısı gibi sonuçlar elenir). Rutin olmayan problemlerde bile bu iskelet geçerlidir; sadece kurulacak "ilişki" bir formülden değil, o anki mantıksal çıkarımdan gelir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül · Temel Problem Kalıpları</div>
+    <p><b>Hareket:</b> $\text{Yol}=\text{Hız}\times\text{Zaman}$ &nbsp;·&nbsp; İki eşit yolun ortalama hızı: $\bar v=\dfrac{2v_1v_2}{v_1+v_2}$</p>
+    <p><b>Yüzde:</b> $\text{Yeni Değer}=\text{Eski Değer}\times\left(1\pm\dfrac{p}{100}\right)$</p>
+    <p><b>Kâr-Zarar:</b> $\text{Satış Fiyatı}=\text{Alış Fiyatı}+\text{Kâr}\quad$ veya $\quad\text{Satış Fiyatı}=\text{Alış Fiyatı}-\text{Zarar}$</p>
+    <p><b>Yaş:</b> $n$ yıl sonra yaş $=$ şimdiki yaş $+\,n\quad$ · $\quad n$ yıl önce yaş $=$ şimdiki yaş $-\,n$</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Yeni Nesil Örnek · Hız/Hareket</div>
+    <p>Bir sürücü, toplam 180 km'lik yolun ilk kısmını sabit 60 km/sa hızla 1 saatte alıyor, ardından trafik nedeniyle 30 dakika mola veriyor ve kalan yolu sabit 90 km/sa hızla tamamlıyor. Sürücünün yolculuğu (mola dâhil) toplam kaç saat sürer?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>İlk 1 saatte $60$ km alınır, geriye $180-60=120$ km kalır. Bu kısım $\dfrac{120}{90}=\dfrac43$ saatte (1 saat 20 dk) tamamlanır. Toplam süre: $1+\dfrac12+\dfrac43=\dfrac{17}{6}$ saat $=\mathbf{2\ \text{saat}\ 50\ \text{dk}}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t0-5">
+  <div class="topic-head"><span class="t-num">R5</span><h3>Fonksiyonlar ve Kümeler</h3></div>
+  <p>Fonksiyonlarda makine modellemesi (giren hammadde, çıkan ürün) ve grafik okuma (iki hareketlinin zaman-yol grafikleri) sıkça sorulur. Kümelerde ise Venn şeması üzerinden kesişim bölgelerinin neyi ifade ettiği (örneğin: gözlüklü olup sarışın olmayanlar) boyalı bölgelerle sorulur.</p>
+  <p><b>Mantığı:</b> "Makine" modeli, fonksiyonu soyut bir kural olmaktan çıkarıp somut bir <i>işlem zinciri</i> hâline getirir: girdi bir kurallar dizisinden geçer, çıktı üretilir. Küme sorularının mantığı ise <i>dahil etme–hariç tutma</i> ilkesidir: iki özelliği aynı anda sayarsanız kesişimi iki kez saymış olursunuz; bu yüzden kesişim bir kez çıkarılır. Venn şemasındaki her "boyalı bölge" aslında küçük bir denklemi resimler.</p>
+  <div class="box formula">
+    <div class="flabel">Formül · Fonksiyon Bileşkesi ve Küme Eleman Sayısı</div>
+    $$(f\circ g)(x)=f\big(g(x)\big)$$
+    $$s(A\cup B)=s(A)+s(B)-s(A\cap B)$$
+    $$s(A\cup B\cup C)=s(A)+s(B)+s(C)-s(A\cap B)-s(A\cap C)-s(B\cap C)+s(A\cap B\cap C)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Yeni Nesil Örnek · Venn Şeması</div>
+    <p>30 kişilik bir sınıfta 12 öğrenci gözlüklü, 9 öğrenci sarışındır; bunlardan 4 öğrenci hem gözlüklü hem sarışındır. Gözlüklü olup sarışın olmayan öğrenci sayısı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Gözlüklü olup sarışın olmayanlar, gözlüklü kümesinden kesişimin çıkarılmasıyla bulunur: $12-4=\mathbf{8}$ öğrenci.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t0-6">
+  <div class="topic-head"><span class="t-num">R6</span><h3>Geometri — Üçgenler ve Katı Cisimler</h3></div>
+  <p>Geometri soruları tamamen günlük eşyalar üzerine kuruludur: katlanan kâğıtlar, duvara yaslanan merdivenler, devrilen dolaplar, kamp çadırları. Adayın üç boyutlu düşünme yeteneği (uzamsal zekâ) kes-yapıştır tarzı sorularla sınanır.</p>
+  <p><b>Mantığı:</b> Günlük bir nesne (merdiven, çadır, dolap), zihinde önce sade bir <i>geometrik iskelete</i> (çoğunlukla dik üçgen veya dikdörtgenler prizmasına) indirgenir; asıl beceri budur. Merdiven-duvar-zemin üçlüsü bir dik üçgen, bir çadırın yan yüzeyi bir üçgen, devrilen bir dolabın taban-yükseklik ilişkisi yine bir dik üçgendir. Şekli çizip doğru üçgeni/prizmayı işaretleyebilen aday, formülü zaten bildiği için sorunun geri kalanı doğrudan işlemdir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül · Pisagor Teoremi ve Temel Alan/Hacim</div>
+    <p>Dik üçgende ($c$ hipotenüs): $\quad a^2+b^2=c^2$</p>
+    <p>Dik üçgenin alanı: $\quad A=\dfrac12\times\text{dik kenar}_1\times\text{dik kenar}_2$</p>
+    <p>Dik prizmanın hacmi: $\quad V=\text{Taban Alanı}\times\text{Yükseklik}$</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Yeni Nesil Örnek</div>
+    <p>Dik duran bir duvara yaslanmış bir merdivenin alt ucu duvardan 6 metre uzaktadır. Merdivenin boyu 10 metre olduğuna göre, merdiven duvara kaç metre yükseklikte değer?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Duvar, zemin ve merdiven dik üçgen oluşturur: $\sqrt{10^2-6^2}=\sqrt{100-36}=\sqrt{64}=\mathbf{8\ \text{metre}}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t0-7">
+  <div class="topic-head"><span class="t-num">R7</span><h3>Klasik vs. ÖSYM Yeni Nesil Soru Karşılaştırması</h3></div>
+  <p>Aşağıdaki tablo, eski sistemin işlem odaklı sorularıyla ÖSYM'nin bugünkü yeni nesil yaklaşımı arasındaki temel farkları özetler.</p>
+  <p><b>Mantığı:</b> Klasik sistemde zorluk "sayıların karmaşıklığından" (küsuratlı işlem, uzun çarpım) gelirken, yeni nesilde zorluk "metnin uzunluğu ve süre baskısından" gelir. Bu kayma tesadüfi değildir: ÖSYM'nin ölçmek istediği beceri hesap makinesi hızı değil, gerçek zamanlı okuma-modelleme hızıdır. Bu yüzden aynı konudan (örneğin yüzde hesabı) hem klasik hem yeni nesil bir soru üretmek mümkündür — değişen matematik değil, <i>sorunun etrafındaki bağlamdır</i>.</p>
+  <div class="cmp-wrap">
+    <table class="cmp-table">
+      <thead>
+        <tr><th>Özellik</th><th>Klasik Matematik (Eski Sistem)</th><th>TYT Matematik (ÖSYM Yeni Nesil)</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Görünüm</th><td>Kısa, formüle dayalı ve işlemsel.</td><td>Uzun metinli, şekilli ve hikâyeli.</td></tr>
+        <tr><th scope="row">Çözüm Yolu</th><td>Formülü bil ve uygula.</td><td>Metni anla, modeli kur, denkleme dök ve çöz.</td></tr>
+        <tr><th scope="row">Zorluk Kaynağı</th><td>Karmaşık, bol küsuratlı işlemler.</td><td>Metnin uzunluğu ve sürenin yetmemesi.</td></tr>
+        <tr><th scope="row">Tuzaklar</th><td>İşlem hatası yapmaya müsait sayılar.</td><td>Yanlış okuma veya ince detayı atlama (örn. "tam sayı" vs "gerçel sayı").</td></tr>
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<article class="topic" id="t0-8">
+  <div class="topic-head"><span class="t-num">R8</span><h3>TYT Matematik İçin Pratik Stratejiler</h3></div>
+  <div class="legend">
+    <div class="item"><div class="swatch" style="background:var(--pine);">1</div><div class="txt"><b>Turlama Tekniğini Kullanın</b><span>İlk okuyuşta anlaşılmayan bir problem sorusunda inatlaşmayın. Zihin arka planda işlemeye devam eder; ikinci turda döndüğünüzde çözüm çok daha kolay görünür.</span></div></div>
+    <div class="item"><div class="swatch" style="background:var(--gold-ink);">2</div><div class="txt"><b>Paragraf Gibi Okuyun, Not Alın</b><span>Veriyi okurken matematiksel sembollerle ($x$, $y$, $2x+5$ vb.) kenara not edin. Metnin tamamını okuyup tekrar başa dönmek ciddi zaman kaybıdır.</span></div></div>
+    <div class="item"><div class="swatch" style="background:var(--rust);">3</div><div class="txt"><b>Soru Köküne ve Öncüllere Dikkat Edin</b><span>"Daima doğrudur", "olabilir", "pozitif tam sayı" gibi ifadelerin altını siz çizin. Sınav stresiyle en çok hata bu ufak dikkatsizliklerden gelir.</span></div></div>
+    <div class="item"><div class="swatch" style="background:var(--ink);">4</div><div class="txt"><b>Zaman Bütçesi Belirleyin</b><span>Bir soruya harcayacağınız süreye baştan karar verin; bu süre dolduğunda soruyu işaretleyip turlama listesine bırakın.</span></div></div>
+  </div>
+  <p><b>Mantığı:</b> Dört strateji de aynı kaynağı korumayı hedefler: <i>bilişsel enerji ve süre</i>. Turlama, takılınan bir soruya harcanacak enerjiyi erteler; not alma, metni tekrar tekrar okuma yükünü ortadan kaldırır; soru köküne dikkat, en ucuz hatayı (yanlış okuma) önler; zaman bütçesi ise elindeki en kıt kaynağı (süre) sayısal olarak yönetmenizi sağlar.</p>
+  <div class="box formula">
+    <div class="flabel">Formül · Zaman Bütçesi Hesabı</div>
+    $$t_{\text{soru}} \approx \frac{T_{\text{kalan süre}}}{n_{\text{kalan soru}}}$$
+    <p>Sınav sırasında herhangi bir anda kalan süreyi kalan soru sayısına bölerek, o an için "soru başına" ne kadar zamanınız olduğunu hızlıca hesaplayabilirsiniz; bu değerin belirgin şekilde altına düştüğünüzü fark ettiğiniz an turlama moduna geçme sinyalidir.</p>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u1">
+  <div class="u-formula" aria-hidden="true">$N\subset Z\subset Q\subset R$</div>
+  <div class="u-eyebrow">Ünite 01 · 14 Konu</div>
+  <h2>Temel Kavramlar ve Sayılar</h2>
+  <p>Sayı kümelerinden EBOB-EKOK'a kadar TYT matematiğinin temelini oluşturan sayı teorisi konuları.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t1">
+  <div class="topic-head"><span class="t-num">01</span><h3>Sayı Kümeleri</h3></div>
+  <p>Sayıları yazmak için kullanılan sembollere <b>rakam</b> denir: <span>0, 1, 2, 3, 4, 5, 6, 7, 8, 9</span>. Rakamların bir araya gelmesiyle <b>sayılar</b> oluşur.</p>
+  <ul>
+    <li><b>Doğal sayılar (N):</b> $N=\{0,1,2,3,\dots\}$</li>
+    <li><b>Tam sayılar (Z):</b> $Z=\{\dots,-2,-1,0,1,2,\dots\}$</li>
+    <li><b>Rasyonel sayılar (Q):</b> $a,b\in Z,\ b\neq 0$ olmak üzere $\frac{a}{b}$ biçiminde yazılabilen sayılar</li>
+    <li><b>İrrasyonel sayılar (Q'):</b> İki tam sayının oranı biçiminde yazılamayan sayılar ($\sqrt2,\ \sqrt3,\ \pi$ gibi)</li>
+    <li><b>Gerçek sayılar (R):</b> $R=Q\cup Q'$</li>
+  </ul>
+  <div class="box formula">
+    <div class="flabel">Formül · Kapsama İlişkisi</div>
+    $$N\subset Z\subset Q\subset R \qquad\text{ve}\qquad Q\cup Q'=R,\ \ Q\cap Q'=\varnothing$$
+  </div>
+  <div class="box warn">
+    <div class="flabel">Dikkat</div>
+    <p>Kök içi negatif olan köklü ifadeler ($\sqrt{-4}$ gibi) gerçek sayı belirtmez; TYT'de bu tip ifadeler tanımsız kabul edilir.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\sqrt9,\ \sqrt7,\ 3{,}14,\ \pi,\ 0{,}\overline{3}$ sayılarından kaç tanesi irrasyoneldir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\sqrt9=3$ rasyonel, $\sqrt7$ tam kareye çıkmadığından irrasyonel, $3{,}14$ sonlu ondalık olduğundan rasyonel, $\pi$ irrasyonel, $0{,}\overline3=\frac13$ devirli olduğundan rasyoneldir. Cevap: <b>2 tane</b> ($\sqrt7$ ve $\pi$).</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t2">
+  <div class="topic-head"><span class="t-num">02</span><h3>Temel İşlemler</h3></div>
+  <p>Bir sayısal ifadede işlemler belirli bir sıraya göre yapılır. Bu sıraya <b>işlem önceliği</b> denir.</p>
+  <div class="box formula">
+    <div class="flabel">İşlem Önceliği Sırası</div>
+    <p>1) Parantez içi &nbsp; 2) Üs ve kök &nbsp; 3) Çarpma ve bölme (soldan sağa) &nbsp; 4) Toplama ve çıkarma (soldan sağa)</p>
+  </div>
+  <ul>
+    <li><b>Dağılma özelliği:</b> $a(b+c)=ab+ac$</li>
+    <li><b>Değişme özelliği:</b> $a+b=b+a,\quad ab=ba$</li>
+    <li><b>Birleşme özelliği:</b> $(a+b)+c=a+(b+c)$</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$3+2\times(5-1)^2\div 4$ işleminin sonucu kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Parantez: $5-1=4$. Üs: $4^2=16$. Soldan sağa çarpma/bölme: $2\times16=32$, $32\div4=8$. Son olarak $3+8=\mathbf{11}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t3">
+  <div class="topic-head"><span class="t-num">03</span><h3>Tek ve Çift Sayılar</h3></div>
+  <ul>
+    <li>Çift sayı: $2k$ &nbsp; Tek sayı: $2k+1$ &nbsp; ($k\in Z$)</li>
+    <li>çift $\pm$ çift = çift &nbsp;&nbsp; tek $\pm$ tek = çift &nbsp;&nbsp; çift $\pm$ tek = tek</li>
+    <li>çift $\times$ (herhangi bir sayı) = çift &nbsp;&nbsp; tek $\times$ tek = tek</li>
+    <li>Tek sayının herhangi bir kuvveti tektir; çift sayının herhangi bir kuvveti çifttir.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$a$ tek, $b$ çift bir tam sayı olduğuna göre $a^2+b$ ifadesinin tek/çift durumu nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$a$ tek olduğundan $a^2$ de tektir. tek + çift = tek. Cevap: <b>tektir</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t4">
+  <div class="topic-head"><span class="t-num">04</span><h3>Pozitif ve Negatif Sayılar</h3></div>
+  <ul>
+    <li>(+)$\times$(+) = (+) &nbsp;&nbsp; (−)$\times$(−) = (+) &nbsp;&nbsp; (+)$\times$(−) = (−)</li>
+    <li>Negatif bir sayının <b>çift</b> kuvveti pozitif, <b>tek</b> kuvveti negatiftir.</li>
+    <li>$a&gt;b$ ve $c&lt;0$ ise $a\cdot c &lt; b\cdot c$ (negatifle çarpınca/bölünce yön değişir)</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$(-2)^4$ ve $(-2)^5$ değerlerini karşılaştırınız.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$(-2)^4=16$ (çift kuvvet → pozitif), $(-2)^5=-32$ (tek kuvvet → negatif). Dolayısıyla $(-2)^4&gt;(-2)^5$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t5">
+  <div class="topic-head"><span class="t-num">05</span><h3>Ardışık Sayılar</h3></div>
+  <ul>
+    <li>Ardışık tam sayılar: $n,\ n+1,\ n+2,\dots$</li>
+    <li>Ardışık çift/tek sayılar: $n,\ n+2,\ n+4,\dots$</li>
+    <li>Tek sayıda ardışık terimin toplamı, terim sayısı $\times$ ortanca terime eşittir.</li>
+  </ul>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$1+2+3+\dots+n=\frac{n(n+1)}{2}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Ardışık 5 tam sayının toplamı 100 olduğuna göre en büyük sayı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Ortanca terim $n$ olsun: $5n=100\Rightarrow n=20$. En büyük terim ortancadan 2 fazladır: $20+2=\mathbf{22}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t6">
+  <div class="topic-head"><span class="t-num">06</span><h3>Sayı Basamakları</h3></div>
+  <p>Bir sayının basamaklarındaki rakamlar, bulundukları basamağa göre farklı bir değer (basamak değeri) taşır.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\overline{abc}=100a+10b+c \qquad (a\neq 0)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>İki basamaklı bir sayının rakamları toplamı 9'dur. Rakamların yerleri değiştirildiğinde sayı 45 azalıyor. Bu sayı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Sayı $\overline{ab}=10a+b$ olsun. $a+b=9$ ve $(10a+b)-(10b+a)=45\Rightarrow 9(a-b)=45\Rightarrow a-b=5$. Buradan $a=7,\ b=2$. Sayı $=\mathbf{72}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t7">
+  <div class="topic-head"><span class="t-num">07</span><h3>Asal ve Aralarında Asal Sayılar</h3></div>
+  <ul>
+    <li><b>Asal sayı:</b> 1'den büyük, pozitif bölenleri yalnızca 1 ve kendisi olan doğal sayı.</li>
+    <li>En küçük asal sayı 2'dir; 2 aynı zamanda tek çift asal sayıdır.</li>
+    <li><b>Aralarında asal sayılar:</b> EBOB'ları 1 olan iki (veya daha çok) sayı.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>15 ile 28 sayıları aralarında asal mıdır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$15=3\times5$, $28=2^2\times7$. Ortak asal çarpanları yoktur, EBOB$(15,28)=1$. Dolayısıyla <b>aralarında asaldır</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t8">
+  <div class="topic-head"><span class="t-num">08</span><h3>Tam Sayılarda Kalanlı Bölme İşlemi</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\text{Bölünen}=\text{Bölen}\times\text{Bölüm}+\text{Kalan}\qquad (0\le \text{Kalan}&lt;\text{Bölen})$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>4'e bölündüğünde 3 kalanını veren en büyük 3 basamaklı sayı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>En büyük 3 basamaklı sayı 999'dur. $999=4\times249+3$ olduğundan kalan zaten 3'tür. Cevap: <b>999</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t9">
+  <div class="topic-head"><span class="t-num">09</span><h3>Bölünebilme Kuralları 1</h3></div>
+  <ul>
+    <li><b>2</b>'ye bölünme: son rakam çift (0,2,4,6,8)</li>
+    <li><b>3</b>'e bölünme: rakamlar toplamı 3'e bölünür</li>
+    <li><b>4</b>'e bölünme: son iki basamak 4'e bölünür</li>
+    <li><b>5</b>'e bölünme: son rakam 0 veya 5</li>
+    <li><b>6</b>'ya bölünme: hem 2 hem 3'e bölünür</li>
+    <li><b>8</b>'e bölünme: son üç basamak 8'e bölünür</li>
+    <li><b>9</b>'a bölünme: rakamlar toplamı 9'a bölünür</li>
+    <li><b>10</b>'a bölünme: son rakam 0</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\overline{4a56}$ sayısı 3'e tam bölünüyorsa $a$ kaç farklı değer alabilir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Rakamlar toplamı $4+a+5+6=15+a$; bunun 3'e bölünmesi gerekir. $a\in\{0,3,6,9\}$ için sağlanır → <b>4 farklı değer</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t10">
+  <div class="topic-head"><span class="t-num">10</span><h3>Bölünebilme Kuralları 2</h3></div>
+  <ul>
+    <li><b>11</b>'e bölünme: sondan başlayarak tek ve çift sıradaki rakamların toplamları farkı 0 veya 11'in katı olmalı.</li>
+    <li><b>12</b>'ye bölünme: sayı hem 3'e hem 4'e bölünmeli.</li>
+    <li><b>25</b>'e bölünme: son iki basamak 00, 25, 50 veya 75 olmalı.</li>
+    <li><b>100</b>'e bölünme: son iki basamak 00 olmalı.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\overline{2a4}$ üç basamaklı sayısı 11'e bölünüyorsa $a$ kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Tek sıradakiler (sağdan 1. ve 3.): $4+2=6$; çift sıradaki (sağdan 2.): $a$. Fark $|6-a|$, 0 veya 11 olmalı. $a=6$ için fark 0. Cevap: <b>$a=6$</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t11">
+  <div class="topic-head"><span class="t-num">11</span><h3>Asal Çarpanlar</h3></div>
+  <p>1'den büyük her doğal sayı, asal sayıların çarpımı olarak (sıralamadan bağımsız) tek türlü yazılabilir. Buna <b>aritmetiğin temel teoremi</b> denir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül · Pozitif Bölen Sayısı</div>
+    <p>$N=a^{p}\cdot b^{q}\cdot c^{r}$ (a,b,c asal) ise, $N$'nin pozitif bölen sayısı:</p>
+    $$s(N)=(p+1)(q+1)(r+1)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>72 sayısının kaç tane pozitif tam sayı böleni vardır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$72=2^3\times3^2$. Bölen sayısı $=(3+1)(2+1)=\mathbf{12}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t12">
+  <div class="topic-head"><span class="t-num">12</span><h3>EBOB - EKOK Kavramları ve Özellikleri</h3></div>
+  <ul>
+    <li><b>EBOB</b> (En Büyük Ortak Bölen): sayıların ortak asal çarpanlarının <b>en küçük</b> üsleriyle çarpımı.</li>
+    <li><b>EKOK</b> (En Küçük Ortak Kat): ortak ve ortak olmayan tüm asal çarpanların <b>en büyük</b> üsleriyle çarpımı.</li>
+  </ul>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$EBOB(a,b)\times EKOK(a,b)=a\times b$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>36 ve 60 sayılarının EBOB ve EKOK'unu bulunuz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$36=2^2\times3^2$, $60=2^2\times3\times5$. EBOB $=2^2\times3=\mathbf{12}$. EKOK $=2^2\times3^2\times5=\mathbf{180}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t13">
+  <div class="topic-head"><span class="t-num">13</span><h3>EBOB - EKOK Problemleri</h3></div>
+  <p>EBOB genellikle <b>eşit paylaştırma / en büyük parça</b> problemlerinde, EKOK ise <b>periyodik çakışma / aynı anda tekrarlama</b> problemlerinde kullanılır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>EBOB'u 8 olan iki doğal sayının toplamı 48'dir. Bu sayılar (sırasız) kaç farklı şekilde belirlenebilir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$a=8m,\ b=8n$ ve $EBOB(m,n)=1$ olsun. $8(m+n)=48\Rightarrow m+n=6$. Toplamı 6 olup aralarında asal $(m,n)$ çiftleri: $(1,5)$. Cevap: <b>1 farklı şekilde</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t14">
+  <div class="topic-head"><span class="t-num">14</span><h3>Periyodik Problemler</h3></div>
+  <p>Belirli bir düzende tekrar eden (periyodik) olaylarda, istenen sıradaki durumu bulmak için <b>kalanlı bölme</b> mantığı kullanılır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir dizi 1. günde yanık, sonraki 2 gün sönük olacak şekilde periyotla devam ediyor (periyot = 3 gün: yanık, sönük, sönük). 50. gün durumu nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$50=3\times16+2$, kalan $2$. Periyodun 2. günü <b>sönük</b> olduğundan, 50. gün de <b>sönüktür</b>.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u2">
+  <div class="u-formula" aria-hidden="true">$ax+b=0$</div>
+  <div class="u-eyebrow">Ünite 02 · 10 Konu</div>
+  <h2>Rasyonel Sayılar, Denklem ve Eşitsizlikler</h2>
+  <p>Kesirli işlemlerden mutlak değere; birinci dereceden denklem ve eşitsizliklerin çözüm teknikleri.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t15">
+  <div class="topic-head"><span class="t-num">15</span><h3>Rasyonel Sayılarda İşlemler</h3></div>
+  <ul>
+    <li>Toplama/çıkarma: paydalar eşitlenir (EKOK), paylar aynı işlemle birleştirilir.</li>
+    <li>Çarpma: $\dfrac{a}{b}\times\dfrac{c}{d}=\dfrac{ac}{bd}$</li>
+    <li>Bölme: $\dfrac{a}{b}\div\dfrac{c}{d}=\dfrac{a}{b}\times\dfrac{d}{c}$ (ters çevirip çarp)</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\dfrac{2}{3}+\dfrac{3}{4}-\dfrac{1}{6}$ işleminin sonucu kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Ortak payda 12: $\dfrac{8}{12}+\dfrac{9}{12}-\dfrac{2}{12}=\dfrac{15}{12}=\mathbf{\dfrac54}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t16">
+  <div class="topic-head"><span class="t-num">16</span><h3>Ondalıklı ve Devirli Ondalıklı Sayılar</h3></div>
+  <ul>
+    <li>Paydası yalnızca 2 ve/veya 5'in kuvvetlerinden oluşan kesirler <b>sonlu ondalık</b> sayı verir.</li>
+    <li><b>Saf devirli</b> ondalık: virgülden hemen sonra devir başlar (örn. $0{,}\overline{45}$).</li>
+    <li><b>Karışık devirli</b> ondalık: virgülden sonra devirsiz bir kısım vardır, ardından devir başlar (örn. $0{,}1\overline{6}$).</li>
+  </ul>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>Saf devirli: $0{,}\overline{ab}=\dfrac{ab}{99}$ &nbsp;·&nbsp; Karışık devirli: devirli sayı $-$ devirsiz kısım, paydada devir sayısı kadar 9 ve devirsiz basamak kadar 0 yazılır.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$0{,}1\overline{6}=0{,}1666\dots$ ondalık sayısını kesir olarak yazınız.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Devirsiz kısım "1", devir "6": $\dfrac{16-1}{90}=\dfrac{15}{90}=\mathbf{\dfrac16}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t17">
+  <div class="topic-head"><span class="t-num">17</span><h3>Gerçek Sayılar Kümesinde Aralık Kavramı</h3></div>
+  <ul>
+    <li><b>Kapalı aralık:</b> $[a,b]=\{x\in R\ |\ a\le x\le b\}$ — uç noktalar dahil</li>
+    <li><b>Açık aralık:</b> $(a,b)=\{x\in R\ |\ a&lt;x&lt;b\}$ — uç noktalar hariç</li>
+    <li><b>Yarı açık aralık:</b> $[a,b)$ veya $(a,b]$ — bir uç dahil, diğeri hariç</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$[-2,3)$ aralığındaki tam sayıları yazınız.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$-2$ dahil, $3$ hariç: $\mathbf{-2,\,-1,\,0,\,1,\,2}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t18">
+  <div class="topic-head"><span class="t-num">18</span><h3>Birinci Dereceden Bir Bilinmeyenli Denklemler</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$ax+b=0\ (a\neq0)\ \Longrightarrow\ x=-\frac{b}{a}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$3(x-2)=2x+4$ denkleminin çözümü nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$3x-6=2x+4\Rightarrow 3x-2x=4+6\Rightarrow x=\mathbf{10}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t19">
+  <div class="topic-head"><span class="t-num">19</span><h3>Basit Eşitsizlikler</h3></div>
+  <div class="box warn">
+    <div class="flabel">Dikkat</div>
+    <p>Bir eşitsizliğin her iki tarafı <b>negatif bir sayı ile çarpılır veya bölünürse eşitsizliğin yönü değişir</b>. Pozitif sayılarla işlemde yön değişmez.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$2x-5&lt;7$ eşitsizliğinin çözüm kümesi nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$2x&lt;12\Rightarrow x&lt;6$. Çözüm kümesi: $\mathbf{(-\infty,6)}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t20">
+  <div class="topic-head"><span class="t-num">20</span><h3>Birinci Dereceden İki Bilinmeyenli Denklemler</h3></div>
+  <p>$ax+by=c$ biçimindeki bir denklemin tek başına sonsuz çözümü vardır (bir doğru belirtir). İki bilinmeyenli iki denklemden oluşan bir <b>sistemin</b> tek çözümü, iki doğrunun kesim noktasıdır.</p>
+  <ul>
+    <li><b>Yok etme yöntemi:</b> denklemler taraf tarafa toplanır/çıkarılır.</li>
+    <li><b>Yerine koyma yöntemi:</b> bir denklemden bir bilinmeyen çekilip diğerinde yerine yazılır.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x+y=7$ ve $x-y=1$ denklem sistemini çözünüz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Taraf tarafa toplanırsa $2x=8\Rightarrow x=4$, buradan $y=3$. Çözüm: $\mathbf{(4,3)}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t21">
+  <div class="topic-head"><span class="t-num">21</span><h3>Birinci Dereceden İki Bilinmeyenli Eşitsizlikler</h3></div>
+  <p>$ax+by&lt;c$ biçimindeki bir eşitsizlik, koordinat düzleminde $ax+by=c$ doğrusunun bir tarafında kalan bölgeyi belirtir. Doğru eşitsizliğe dahilse (≤ veya ≥) kesik değil düz çizilir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x+y\le4$, $x\ge0$, $y\ge0$ koşullarını birlikte sağlayan kaç tane $(x,y)$ tam sayı ikilisi vardır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$x=0,1,2,3,4$ için $y$ sırasıyla $0..4,\ 0..3,\ 0..2,\ 0..1,\ 0..0$ değerlerini alabilir: $5+4+3+2+1=\mathbf{15}$ ikili.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t22">
+  <div class="topic-head"><span class="t-num">22</span><h3>Birinci Dereceden İki Bilinmeyenli Eşitsizlik Sistemleri</h3></div>
+  <p>Birden fazla doğrusal eşitsizliğin <b>ortak çözüm bölgesi</b>, her bir eşitsizliğin belirttiği bölgelerin kesişimidir. Bölge, düzlemde her bir doğru çizilip uygun taraflar taranarak bulunur.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x\ge1$, $y\ge1$, $x+y\le5$ sistemini sağlayan tam sayı $(x,y)$ ikililerinin sayısını bulunuz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$x=1$: $y=1,2,3$ (3); $x=2$: $y=1,2$ (2); $x=3$: $y=1$ (1). Toplam $=3+2+1=\mathbf{6}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t23">
+  <div class="topic-head"><span class="t-num">23</span><h3>Mutlak Değer Kavramı ve Özellikleri</h3></div>
+  <p>Bir sayının sayı doğrusunda başlangıç noktasına olan uzaklığına <b>mutlak değeri</b> denir; her zaman negatif olmayan bir sonuç verir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$|x|=\begin{cases}x,&x\ge0\\-x,&x&lt;0\end{cases}\qquad |a\cdot b|=|a|\cdot|b|\qquad \left|\frac{a}{b}\right|=\frac{|a|}{|b|}\ (b\neq0)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$|3-7|+|-2|$ işleminin sonucu kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$|{-4}|+|{-2}|=4+2=\mathbf{6}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t24">
+  <div class="topic-head"><span class="t-num">24</span><h3>Mutlak Değerli Denklemler ve Eşitsizlikler</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>$a\ge0$ olmak üzere:</p>
+    $$|x|=a \iff x=a \ \text{veya}\ x=-a$$
+    $$|x|&lt;a \iff -a&lt;x&lt;a \qquad\qquad |x|&gt;a \iff x&lt;-a\ \text{veya}\ x&gt;a$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$|2x-3|=7$ denklemini çözünüz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$2x-3=7\Rightarrow x=5$ &nbsp;veya&nbsp; $2x-3=-7\Rightarrow x=-2$. Çözüm kümesi: $\mathbf{\{-2,\,5\}}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u3">
+  <div class="u-formula" aria-hidden="true">$a^ma^n=a^{m+n}$</div>
+  <div class="u-eyebrow">Ünite 03 · 4 Konu</div>
+  <h2>Üslü ve Köklü İfadeler</h2>
+  <p>Üs ve kök kurallarıyla bu ifadeleri içeren denklem ve eşitsizliklerin çözümü.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t25">
+  <div class="topic-head"><span class="t-num">25</span><h3>Üslü İfadeler ve Özellikleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$a^m\cdot a^n=a^{m+n}\qquad \frac{a^m}{a^n}=a^{m-n}\qquad (a^m)^n=a^{mn}$$
+    $$(ab)^n=a^nb^n\qquad a^0=1\ (a\neq0)\qquad a^{-n}=\frac{1}{a^n}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$2^3\cdot2^{-5}\cdot4^2$ ifadesinin değeri kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$2^3\cdot2^{-5}=2^{-2}$; $4^2=2^4$. $2^{-2}\cdot2^4=2^2=\mathbf{4}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t26">
+  <div class="topic-head"><span class="t-num">26</span><h3>Üslü İfade İçeren Denklemler ve Eşitsizlikler</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$a&gt;0,\ a\neq1\ \text{olmak üzere}\qquad a^{x}=a^{y}\iff x=y$$
+  </div>
+  <p>Eşitsizliklerde ise taban $a&gt;1$ ise yön korunur, $0&lt;a&lt;1$ ise yön değişir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$2^{x-1}=8$ denkleminin çözümü nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$8=2^3$ olduğundan $x-1=3\Rightarrow x=\mathbf{4}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t27">
+  <div class="topic-head"><span class="t-num">27</span><h3>Köklü İfadeler ve Özellikleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\sqrt{a}\cdot\sqrt{b}=\sqrt{ab}\qquad \frac{\sqrt a}{\sqrt b}=\sqrt{\frac{a}{b}}\ (b&gt;0)\qquad a\sqrt{b}+c\sqrt{b}=(a+c)\sqrt{b}$$
+    $$\text{Rasyonelleştirme: }\ \frac{1}{\sqrt a}=\frac{\sqrt a}{a}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\sqrt{12}+\sqrt{27}$ ifadesini sadeleştiriniz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\sqrt{12}=2\sqrt3$, $\sqrt{27}=3\sqrt3$. Toplam $=2\sqrt3+3\sqrt3=\mathbf{5\sqrt3}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t28">
+  <div class="topic-head"><span class="t-num">28</span><h3>Köklü İfadeleri İçeren Denklemler ve Eşitsizlikler</h3></div>
+  <div class="box warn">
+    <div class="flabel">Dikkat</div>
+    <p>Kök içeren bir denklemi çözerken her iki tarafın karesi alınırken <b>yeni (yabancı) kökler</b> oluşabilir. Bulunan tüm çözümler, mutlaka orijinal denklemde <b>kontrol edilmelidir</b>.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\sqrt{x+3}=x-3$ denklemini çözünüz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Her iki tarafın karesi: $x+3=(x-3)^2=x^2-6x+9\Rightarrow x^2-7x+6=0\Rightarrow (x-1)(x-6)=0$. $x=1$ veya $x=6$. Kontrol: $x=1\Rightarrow\sqrt4=2\neq1-3=-2$ (reddedilir, çünkü kök negatif olamaz). $x=6\Rightarrow\sqrt9=3=6-3$ (doğru). Çözüm: $\mathbf{x=6}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u4">
+  <div class="u-formula" aria-hidden="true">$\dfrac{a}{b}=\dfrac{c}{d}$</div>
+  <div class="u-eyebrow">Ünite 04 · 11 Konu</div>
+  <h2>Oran-Orantı ve Problemler</h2>
+  <p>TYT'nin en çok soru içeren bölümü: oran-orantıdan hareket problemlerine günlük hayat problemleri.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t29">
+  <div class="topic-head"><span class="t-num">29</span><h3>Oran-Orantı Kavramı ve Özellikleri</h3></div>
+  <ul>
+    <li>İki niceliğin bölümüne <b>oran</b> denir: $\dfrac{a}{b}$</li>
+    <li>Eşit iki orana <b>orantı</b> denir: $a:b=c:d$</li>
+    <li><b>İç çarpımların çarpımı = dış çarpımların çarpımı:</b> $a\cdot d=b\cdot c$</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\dfrac{a}{b}=\dfrac{3}{5}$ ve $a+b=40$ olduğuna göre $a$ ve $b$ kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$a=3k,\ b=5k$ olsun. $8k=40\Rightarrow k=5$. $a=\mathbf{15},\ b=\mathbf{25}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t30">
+  <div class="topic-head"><span class="t-num">30</span><h3>Oran-Orantı Problemleri</h3></div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir sepetteki elma-armut sayılarının oranı $2:3$'tür. Sepette toplam 40 meyve olduğuna göre kaç tane elma vardır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$2k+3k=40\Rightarrow k=8$. Elma sayısı $=2\times8=\mathbf{16}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t31">
+  <div class="topic-head"><span class="t-num">31</span><h3>Sayı Problemleri</h3></div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>İki sayının toplamı 50, farkı 10'dur. Bu sayılar kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$x+y=50,\ x-y=10$. Taraf tarafa toplanırsa $2x=60\Rightarrow x=\mathbf{30}$, $y=\mathbf{20}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t32">
+  <div class="topic-head"><span class="t-num">32</span><h3>Kesir Problemleri</h3></div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir sayının $\dfrac34$'ü, $\dfrac25$'inden 7 fazladır. Bu sayı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac34x-\dfrac25x=7\Rightarrow \dfrac{15-8}{20}x=7\Rightarrow \dfrac{7}{20}x=7\Rightarrow x=\mathbf{20}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t33">
+  <div class="topic-head"><span class="t-num">33</span><h3>Yaş Problemleri</h3></div>
+  <div class="box warn">
+    <div class="flabel">Dikkat</div>
+    <p>İki kişi arasındaki yaş farkı zamanla <b>değişmez</b>. Problemleri kurarken bu sabitlikten yararlanmak çözümü kısaltır.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Ayşe, Ali'den 8 yaş büyüktür. 4 yıl önce yaşları toplamı 36 idi. Ayşe ve Ali'nin şimdiki yaşları kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$A=Al+8$. $(A-4)+(Al-4)=36\Rightarrow A+Al=44$. Yerine yazarsak $2\,Al+8=44\Rightarrow Al=\mathbf{18}$, $A=\mathbf{26}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t34">
+  <div class="topic-head"><span class="t-num">34</span><h3>İşçi Problemleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>Bir işi $n$ günde bitiren birinin bir günlük iş hızı $\dfrac1n$'dir. Birlikte çalışanların iş hızları toplanır.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir işi A tek başına 6 günde, B tek başına 12 günde bitiriyor. Birlikte çalışırlarsa kaç günde biter?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Günlük hız: $\dfrac16+\dfrac1{12}=\dfrac{2+1}{12}=\dfrac{3}{12}=\dfrac14$. İş $\mathbf{4}$ günde biter.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t35">
+  <div class="topic-head"><span class="t-num">35</span><h3>Yüzde Problemleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\%a\ \text{artış}: \ \text{Yeni değer}=\text{Eski}\times\left(1+\frac{a}{100}\right)\qquad \%a\ \text{azalış}: \ \text{Yeni}=\text{Eski}\times\left(1-\frac{a}{100}\right)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>250 TL'nin %20 fazlası kaç TL'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$250\times1{,}20=\mathbf{300}\ \text{TL}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t36">
+  <div class="topic-head"><span class="t-num">36</span><h3>Kâr - Zarar Problemleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\text{Satış Fiyatı}=\text{Alış Fiyatı}+\text{Kâr}\qquad \text{Satış Fiyatı}=\text{Alış Fiyatı}-\text{Zarar}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir esnaf 100 TL'ye aldığı bir ürünü %30 kârla satıyor. Satış fiyatı kaç TL'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$100\times1{,}30=\mathbf{130}\ \text{TL}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t37">
+  <div class="topic-head"><span class="t-num">37</span><h3>Karışım Problemleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>Karışımdaki saf madde miktarı $=\text{toplam miktar}\times\dfrac{\text{yüzde}}{100}$; karışımın yüzdesi $=\dfrac{\text{toplam saf madde}}{\text{toplam karışım}}\times100$</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>%20 tuz oranına sahip 300 g su ile %50 tuz oranına sahip 200 g su karıştırılıyor. Elde edilen karışımın tuz yüzdesi kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Tuz miktarı $=300\times0{,}2+200\times0{,}5=60+100=160\ \text{g}$. Toplam karışım $=500\ \text{g}$. Oran $=\dfrac{160}{500}\times100=\mathbf{\%32}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t38">
+  <div class="topic-head"><span class="t-num">38</span><h3>Hareket Problemleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\text{Yol}=\text{Hız}\times\text{Zaman}$$
+    <p>Zıt yönde hareket edenlerin hızları <b>toplanır</b>; aynı yönde hareket edenlerin hızları arasındaki <b>fark</b> alınır (yakalama problemleri).</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Aralarında 300 km olan iki şehirden aynı anda karşılıklı yola çıkan araçlardan biri 60 km/sa, diğeri 90 km/sa hızla gidiyor. Kaç saat sonra karşılaşırlar?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Yaklaşma hızı $=60+90=150\ \text{km/sa}$. Zaman $=\dfrac{300}{150}=\mathbf{2\ \text{saat}}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t39">
+  <div class="topic-head"><span class="t-num">39</span><h3>Rutin Olmayan Problemler</h3></div>
+  <p>Doğrudan bir formüle dayanmayan, mantık yürütme, tablo/şema kurma veya sistematik deneme gerektiren problemlerdir. Genellikle verileri küçük parçalara bölüp adım adım ilerlemek en etkili yöntemdir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir kutuda yalnızca kırmızı ve mavi bilyeler vardır. Kırmızı bilye sayısı mavi bilye sayısının 2 katından 3 azdır. Toplam bilye sayısı 27 ise kırmızı bilye sayısı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Mavi $=m$, kırmızı $=2m-3$. $m+2m-3=27\Rightarrow 3m=30\Rightarrow m=10$. Kırmızı $=2(10)-3=\mathbf{17}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u5">
+  <div class="u-formula" aria-hidden="true">$p\rightarrow q$</div>
+  <div class="u-eyebrow">Ünite 05 · 6 Konu</div>
+  <h2>Mantık</h2>
+  <p>Önermeler, bileşik önermeler ve niceleyicilerle matematiksel mantığın temelleri.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t40">
+  <div class="topic-head"><span class="t-num">40</span><h3>Önermeler</h3></div>
+  <p>Doğru ya da yanlış kesin bir hüküm bildiren cümlelere <b>önerme</b> denir; genellikle $p,q,r,\dots$ harfleriyle gösterilir. Bir önermenin doğruluk değeri değiştirilerek elde edilen yeni önermeye <b>olumsuzu</b> ($\sim p$ veya $\bar p$) denir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>"İstanbul, Türkiye'nin başkentidir." önermesinin doğruluk değeri ve olumsuzu nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Önerme <b>yanlıştır</b> (başkent Ankara'dır). Olumsuzu: "İstanbul, Türkiye'nin başkenti değildir." — bu önerme <b>doğrudur</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t41">
+  <div class="topic-head"><span class="t-num">41</span><h3>Bileşik Önermeler</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül · Doğruluk Kuralları</div>
+    <p><b>Ve ($p\wedge q$):</b> yalnızca $p$ ve $q$'nun ikisi de doğruysa doğrudur.<br><b>Veya ($p\vee q$):</b> $p$ ve $q$'dan en az biri doğruysa doğrudur.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$p$ doğru, $q$ yanlış olduğuna göre $p\wedge q$ ve $p\vee q$ önermelerinin doğruluk değerleri nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$p\wedge q=\mathbf{Yanlış}$ (ikisi birden doğru değil). $p\vee q=\mathbf{Doğru}$ (en az biri doğru).</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t42">
+  <div class="topic-head"><span class="t-num">42</span><h3>Koşullu Önerme</h3></div>
+  <p>$p\rightarrow q$ ("$p$ ise $q$") biçimindeki önerme, yalnızca <b>$p$ doğru iken $q$ yanlış</b> olduğunda yanlıştır; diğer tüm durumlarda doğrudur.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$p$: "5 çift sayıdır" (Yanlış), $q$: "3 tek sayıdır" (Doğru) önermeleri veriliyor. $p\rightarrow q$'nun doğruluk değeri nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$p$ yanlış olduğundan, $q$'nun doğruluk değeri ne olursa olsun $p\rightarrow q$ <b>doğrudur</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t43">
+  <div class="topic-head"><span class="t-num">43</span><h3>İki Yönlü Koşullu Önerme</h3></div>
+  <p>$p\leftrightarrow q$ önermesi, $p$ ve $q$ <b>aynı doğruluk değerine</b> sahip olduğunda (ikisi de doğru ya da ikisi de yanlış) doğrudur.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$p$ doğru, $q$ doğru olduğuna göre $p\leftrightarrow q$'nun doğruluk değeri nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>İkisi de doğru olduğundan $p\leftrightarrow q=\mathbf{Doğru}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t44">
+  <div class="topic-head"><span class="t-num">44</span><h3>Niceleyiciler</h3></div>
+  <ul>
+    <li><b>Tümel niceleyici ($\forall$):</b> "her", "bütün", "tüm" — kümenin tüm elemanları için geçerlidir.</li>
+    <li><b>Varlıksal niceleyici ($\exists$):</b> "bazı", "en az bir" — kümenin en az bir elemanı için geçerlidir.</li>
+  </ul>
+  <div class="box warn">
+    <div class="flabel">Dikkat</div>
+    <p>$\forall x,\ p(x)$ önermesinin olumsuzu $\exists x,\ \sim p(x)$'tir (ve tersi). Tümel önermenin olumsuzu varlıksal, varlıksal önermenin olumsuzu tümel olur.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>"Bütün kuşlar uçar." önermesinin olumsuzunu yazınız.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p><b>"Uçamayan en az bir kuş vardır."</b> (Bazı kuşlar uçmaz.)</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t45">
+  <div class="topic-head"><span class="t-num">45</span><h3>Tanım, Aksiyom, Teorem ve İspat</h3></div>
+  <ul>
+    <li><b>Tanım:</b> Bir kavramın açık ve kesin biçimde ifade edilmesi.</li>
+    <li><b>Aksiyom (Belit):</b> Doğruluğu ispatsız kabul edilen temel önerme.</li>
+    <li><b>Teorem:</b> Aksiyomlardan ve önceki teoremlerden mantık yoluyla ispatlanmış önerme.</li>
+    <li><b>İspat:</b> Bir önermenin doğruluğunun mantıksal adımlarla gösterilmesi.</li>
+  </ul>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u6">
+  <div class="u-formula" aria-hidden="true">$A\cup B$</div>
+  <div class="u-eyebrow">Ünite 06 · 6 Konu</div>
+  <h2>Kümeler</h2>
+  <p>Küme kavramından kartezyen çarpıma; kümelerle işlemler ve problem çözümü.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t46">
+  <div class="topic-head"><span class="t-num">46</span><h3>Kümelerde Temel Kavramlar</h3></div>
+  <p>İyi tanımlanmış (hangi nesnelerin dahil olduğu net biçimde bilinen) nesneler topluluğuna <b>küme</b> denir. Hiç elemanı olmayan kümeye <b>boş küme</b> ($\varnothing$) denir. Bir kümenin eleman sayısı $s(A)$ ile gösterilir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$A=\{1,\,2,\,3,\,\{4,5\}\}$ kümesinin eleman sayısı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$1,\ 2,\ 3$ ve $\{4,5\}$ birer eleman sayıldığından $s(A)=\mathbf{4}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t47">
+  <div class="topic-head"><span class="t-num">47</span><h3>Alt Küme</h3></div>
+  <p>$A$ kümesinin her elemanı aynı zamanda $B$ kümesinin de elemanı ise $A\subseteq B$ denir ve "$A$, $B$'nin alt kümesidir" denir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>$s(A)=n$ ise, $A$'nın alt küme sayısı $=2^n$; öz alt küme sayısı (kümenin kendisi hariç) $=2^n-1$.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$A=\{a,b,c\}$ kümesinin alt küme sayısı ve öz alt küme sayısı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Alt küme sayısı $=2^3=\mathbf{8}$. Öz alt küme sayısı $=8-1=\mathbf{7}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t48">
+  <div class="topic-head"><span class="t-num">48</span><h3>Kümelerde Kesişim ve Birleşim İşlemi</h3></div>
+  <ul>
+    <li><b>Kesişim ($A\cap B$):</b> hem $A$'da hem $B$'de bulunan elemanların kümesi.</li>
+    <li><b>Birleşim ($A\cup B$):</b> $A$ ile $B$'nin en az birinde bulunan elemanların kümesi.</li>
+  </ul>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$s(A\cup B)=s(A)+s(B)-s(A\cap B)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$s(A)=12$, $s(B)=9$, $s(A\cap B)=4$ ise $s(A\cup B)$ kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$12+9-4=\mathbf{17}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t49">
+  <div class="topic-head"><span class="t-num">49</span><h3>Kümelerde Fark ve Tümleme İşlemleri</h3></div>
+  <ul>
+    <li><b>Fark ($A-B$):</b> $A$'da olup $B$'de olmayan elemanların kümesi.</li>
+    <li><b>Tümleme ($A'$):</b> evrensel kümede ($E$) olup $A$'da olmayan elemanların kümesi; $A'=E-A$.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$E=\{1,2,\dots,10\}$ ve $A=\{2,4,6,8,10\}$ ise $A'$ kümesi nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$A'=\mathbf{\{1,3,5,7,9\}}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t50">
+  <div class="topic-head"><span class="t-num">50</span><h3>Küme Problemleri</h3></div>
+  <p>Günlük hayat problemlerinde iki özelliği birlikte/ayrı sağlayan varlık sayıları sorulduğunda, birleşim-kesişim formülü ve <b>Venn şeması</b> kullanışlıdır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>30 kişilik bir sınıfta 18 öğrenci matematiği, 15 öğrenci fiziği, 8 öğrenci ise her ikisini birden seviyor. Hiçbirini sevmeyen kaç öğrenci vardır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$s(M\cup F)=18+15-8=25$. Hiçbirini sevmeyenler $=30-25=\mathbf{5}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t51">
+  <div class="topic-head"><span class="t-num">51</span><h3>Sıralı İkililer ve Kartezyen Çarpım</h3></div>
+  <p>Elemanların sırasının önemli olduğu $(a,b)$ ikilisine <b>sıralı ikili</b> denir; $a\neq b$ iken $(a,b)\neq(b,a)$'dır. $A$ ve $B$ kümelerinin <b>kartezyen çarpımı</b>:</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$A\times B=\{(a,b)\ |\ a\in A,\ b\in B\}\qquad s(A\times B)=s(A)\times s(B)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$A=\{1,2\}$, $B=\{3,4,5\}$ ise $A\times B$ kümesini yazıp eleman sayısını bulunuz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$A\times B=\{(1,3),(1,4),(1,5),(2,3),(2,4),(2,5)\}$, $s(A\times B)=2\times3=\mathbf{6}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u7">
+  <div class="u-formula" aria-hidden="true">$\dbinom{n}{r}$</div>
+  <div class="u-eyebrow">Ünite 07 · 10 Konu</div>
+  <h2>Sayma, Permütasyon, Kombinasyon ve Olasılık</h2>
+  <p>Saymanın temel ilkesinden binom açılımına, olasılık hesaplarına kadar kombinatorik.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t52">
+  <div class="topic-head"><span class="t-num">52</span><h3>Saymanın Temel İlkesi</h3></div>
+  <p>Bir iş $m$ farklı, bağımsız bir başka iş $n$ farklı şekilde yapılabiliyorsa, iki iş birlikte (art arda) $m\times n$ farklı şekilde yapılabilir (<b>çarpma kuralı</b>).</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir lokantada 3 çorba ve 4 ana yemek seçeneği vardır. Bir çorba ve bir ana yemekten oluşan kaç farklı menü seçilebilir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$3\times4=\mathbf{12}$ farklı menü.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t53">
+  <div class="topic-head"><span class="t-num">53</span><h3>Faktöriyel Kavramı</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$n!=n\times(n-1)\times(n-2)\times\dots\times2\times1 \qquad 0!=1$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\dfrac{6!}{4!}$ ifadesinin değeri kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{6!}{4!}=6\times5=\mathbf{30}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t54">
+  <div class="topic-head"><span class="t-num">54</span><h3>Permütasyon</h3></div>
+  <p>$n$ farklı nesneden $r$ tanesinin <b>sıra önemli</b> olacak şekilde seçilip dizilmesine permütasyon denir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$P(n,r)=\frac{n!}{(n-r)!}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>5 kişilik bir gruptan 3 kişinin sıralı olarak (1., 2., 3. sıra) seçilme sayısı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$P(5,3)=\dfrac{5!}{2!}=5\times4\times3=\mathbf{60}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t55">
+  <div class="topic-head"><span class="t-num">55</span><h3>Tekrarlı Permütasyon</h3></div>
+  <p>Aralarında birbirinin aynısı (özdeş) nesneler bulunan $n$ nesnenin diziliş sayısı, özdeş nesne gruplarının faktöriyellerine bölünerek bulunur.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\frac{n!}{n_1!\,n_2!\,\cdots\,n_k!}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>"ANANAS" kelimesinin (6 harf; A: 3 tane, N: 2 tane, S: 1 tane) harfleriyle kaç farklı dizilim oluşturulabilir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{6!}{3!\,2!}=\dfrac{720}{12}=\mathbf{60}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t56">
+  <div class="topic-head"><span class="t-num">56</span><h3>Kombinasyon Kavramı ve Özellikleri</h3></div>
+  <p>$n$ farklı nesneden $r$ tanesinin <b>sıra önemli olmadan</b> seçilmesine kombinasyon denir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$C(n,r)=\binom{n}{r}=\frac{n!}{r!\,(n-r)!}\qquad \binom{n}{r}=\binom{n}{n-r}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>7 kişilik bir gruptan (sıra önemsiz) 3 kişilik bir komite kaç farklı şekilde seçilebilir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dbinom{7}{3}=\dfrac{7!}{3!\,4!}=\mathbf{35}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t57">
+  <div class="topic-head"><span class="t-num">57</span><h3>Kombinasyon Problemleri</h3></div>
+  <p>Farklı gruplardan seçim yapılan problemlerde her grup için ayrı kombinasyon hesaplanıp <b>çarpma kuralı</b> ile birleştirilir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>5 erkek ve 4 kadından oluşan bir gruptan 2 erkek ve 2 kadın seçilerek 4 kişilik bir ekip kaç farklı şekilde oluşturulabilir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dbinom{5}{2}\times\dbinom{4}{2}=10\times6=\mathbf{60}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t58">
+  <div class="topic-head"><span class="t-num">58</span><h3>Kombinasyon ve Geometri</h3></div>
+  <p>Bir düzlemde, hiçbiri doğrusal (aynı doğru üzerinde) olmayan $n$ nokta ile çizilebilecek farklı doğru parçası sayısı $\dbinom{n}{2}$, üçgen sayısı ise $\dbinom{n}{3}$'tür.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir çember üzerindeki 6 noktadan geçen kaç farklı kiriş (doğru parçası) çizilebilir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dbinom{6}{2}=\mathbf{15}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t59">
+  <div class="topic-head"><span class="t-num">59</span><h3>Binom Açılımı</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k}$$
+    <p>Genel terim (baştan $k{+}1$. terim): $\ \binom{n}{k}a^{n-k}b^{k}$</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$(x+2)^4$ açılımında $x^2$'li terimin katsayısı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Genel terim: $\binom{4}{k}x^{4-k}2^{k}$. $x^2$ için $4-k=2\Rightarrow k=2$. Katsayı $=\binom{4}{2}\times2^2=6\times4=\mathbf{24}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t60">
+  <div class="topic-head"><span class="t-num">60</span><h3>Olasılıkta Temel Kavramlar</h3></div>
+  <ul>
+    <li><b>Deney:</b> sonucu önceden kesin bilinmeyen işlem &nbsp;·&nbsp; <b>Örnek uzay ($S$):</b> tüm olası sonuçların kümesi &nbsp;·&nbsp; <b>Olay:</b> örnek uzayın bir alt kümesi</li>
+  </ul>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>Eşit olasılıklı durumlarda: $\quad P(A)=\dfrac{s(A)}{s(S)}=\dfrac{\text{istenen durum sayısı}}{\text{tüm durum sayısı}}$</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir zar atıldığında üste gelen sayının çift olma olasılığı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Çift sayılar: $\{2,4,6\}$, $s(A)=3$; $s(S)=6$. $P=\dfrac{3}{6}=\mathbf{\dfrac12}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t61">
+  <div class="topic-head"><span class="t-num">61</span><h3>Basit Olayların Olasılıkları</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p><b>Tümleyen olay:</b> $P(A')=1-P(A)$ &nbsp;·&nbsp; <b>Bağımsız olaylar:</b> $P(A\cap B)=P(A)\times P(B)$</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>İki zar birlikte atıldığında her ikisinin de 6 gelme olasılığı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Zarlar bağımsız: $P=\dfrac16\times\dfrac16=\mathbf{\dfrac1{36}}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u8">
+  <div class="u-formula" aria-hidden="true">$f:A\to B$</div>
+  <div class="u-eyebrow">Ünite 08 · 12 Konu</div>
+  <h2>Fonksiyonlar</h2>
+  <p>Fonksiyon kavramından bileşke ve tersine; grafik okuma ve çizme becerileri.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t62">
+  <div class="topic-head"><span class="t-num">62</span><h3>Fonksiyon Kavramı ve Gösterimi</h3></div>
+  <p>$A$ kümesindeki <b>her</b> elemanı, $B$ kümesinde <b>yalnızca bir</b> elemana eşleyen bağıntıya fonksiyon denir: $f:A\to B$. $A$'ya <b>tanım kümesi</b>, $B$'ye <b>değer kümesi</b>, $f(A)$'ya ise <b>görüntü kümesi</b> denir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=2x+1$ ve $A=\{1,2,3\}$ olduğuna göre $f(A)$ görüntü kümesi nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$f(1)=3,\ f(2)=5,\ f(3)=7\Rightarrow f(A)=\mathbf{\{3,5,7\}}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t63">
+  <div class="topic-head"><span class="t-num">63</span><h3>Fonksiyon Olma Koşulu</h3></div>
+  <p>Bir bağıntının fonksiyon sayılması için tanım kümesindeki <b>her eleman eşlenmeli</b> ve <b>her eleman yalnızca bir görüntüye</b> sahip olmalıdır (grafikte: her dikey doğru grafiği en fazla bir noktada keser).</p>
+</article>
+
+<article class="topic" id="t64">
+  <div class="topic-head"><span class="t-num">64</span><h3>Kesirli ve Köklü Fonksiyonlarda Tanım Kümesi</h3></div>
+  <div class="box warn">
+    <div class="flabel">Dikkat</div>
+    <p>Kesir biçimindeki fonksiyonlarda <b>paydayı sıfır yapan</b>, kök içeren fonksiyonlarda ise <b>kök içini negatif yapan</b> değerler tanım kümesinden çıkarılır.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=\dfrac{1}{x-3}$ fonksiyonunun gerçek sayılardaki tanım kümesi nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$x-3\neq0\Rightarrow x\neq3$. Tanım kümesi $=\mathbf{R-\{3\}}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t65">
+  <div class="topic-head"><span class="t-num">65</span><h3>İçine, Örten, Birebir ve Eşit Fonksiyonlar</h3></div>
+  <ul>
+    <li><b>Birebir (bir-bir):</b> farklı elemanların görüntüleri farklıdır: $f(x_1)=f(x_2)\Rightarrow x_1=x_2$.</li>
+    <li><b>Örten:</b> değer kümesindeki her eleman en az bir elemanın görüntüsüdür: $f(A)=B$.</li>
+    <li><b>İçine fonksiyon:</b> örten olmayan fonksiyon; görüntü kümesi $B$'nin öz alt kümesidir.</li>
+    <li><b>Eşit fonksiyonlar:</b> tanım kümeleri aynı ve tanım kümesindeki her $x$ için $f(x)=g(x)$'tir.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f:R\to R$, $f(x)=x^2$ fonksiyonu birebir midir? Örten midir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$f(-2)=f(2)=4$ olduğundan <b>birebir değildir</b>. Görüntü kümesi $[0,\infty)$ olup $R$'ye eşit olmadığından <b>örten de değildir</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t66">
+  <div class="topic-head"><span class="t-num">66</span><h3>Birim ve Sabit Fonksiyon</h3></div>
+  <ul>
+    <li><b>Birim fonksiyon:</b> $f(x)=x$ — her elemanı kendisine götürür.</li>
+    <li><b>Sabit fonksiyon:</b> $f(x)=c$ — tanım kümesindeki her $x$ için aynı $c$ değerini verir.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=5$ sabit fonksiyonu için $f(10)$ değeri nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Sabit fonksiyon her girdi için aynı değeri verir: $f(10)=\mathbf5$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t67">
+  <div class="topic-head"><span class="t-num">67</span><h3>Doğrusal ve Parçalı Fonksiyon</h3></div>
+  <ul>
+    <li><b>Doğrusal fonksiyon:</b> $f(x)=ax+b$ biçiminde, grafiği bir doğrudur.</li>
+    <li><b>Parçalı fonksiyon:</b> tanım kümesinin farklı aralıklarında farklı kurallarla tanımlanan fonksiyon.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=\begin{cases}x+1,&x\ge0\\-x+1,&x&lt;0\end{cases}$ olduğuna göre $f(-3)$ kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$-3&lt;0$ olduğundan alt kural kullanılır: $f(-3)=-(-3)+1=\mathbf4$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t68">
+  <div class="topic-head"><span class="t-num">68</span><h3>Çift ve Tek Fonksiyon</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p><b>Çift fonksiyon:</b> $f(-x)=f(x)$ (grafiği $y$ eksenine göre simetrik) &nbsp;·&nbsp; <b>Tek fonksiyon:</b> $f(-x)=-f(x)$ (grafiği orijine göre simetrik)</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=x^2$ fonksiyonu çift midir, tek midir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$f(-x)=(-x)^2=x^2=f(x)$ olduğundan fonksiyon <b>çifttir</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t69">
+  <div class="topic-head"><span class="t-num">69</span><h3>Fonksiyonlarda Dört İşlem</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$(f+g)(x)=f(x)+g(x)\quad (f\cdot g)(x)=f(x)\cdot g(x)\quad \left(\frac{f}{g}\right)(x)=\frac{f(x)}{g(x)}\ (g(x)\neq0)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=x+2$, $g(x)=x-1$ olduğuna göre $(f\cdot g)(3)$ kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$f(3)=5$, $g(3)=2$. $(f\cdot g)(3)=5\times2=\mathbf{10}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t70">
+  <div class="topic-head"><span class="t-num">70</span><h3>Fonksiyon Grafiklerini Çizme</h3></div>
+  <p>Bir fonksiyonun grafiğini çizerken eksenleri kestiği noktalar ($x$ ekseni için $f(x)=0$, $y$ ekseni için $x=0$), tepe noktası (parabolde) ve simetri özellikleri kullanılır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=x-2$ doğrusunun eksenleri kestiği noktalar nelerdir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$x$ eksenini kestiği nokta ($y=0$): $x=2\to(2,0)$. $y$ eksenini kestiği nokta ($x=0$): $y=-2\to(0,-2)$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t71">
+  <div class="topic-head"><span class="t-num">71</span><h3>İki Fonksiyonun Bileşkesi</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$(f\circ g)(x)=f(g(x))$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=2x+1$, $g(x)=x^2$ olduğuna göre $(f\circ g)(3)$ kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$g(3)=9$, $f(9)=2(9)+1=\mathbf{19}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t72">
+  <div class="topic-head"><span class="t-num">72</span><h3>Bir Fonksiyonun Tersi</h3></div>
+  <p>Bir fonksiyonun tersini bulmak için $y=f(x)$ eşitliğinde $x$ yalnız bırakılır, ardından $x$ ile $y$'nin yerleri değiştirilir. Ters fonksiyon yalnızca <b>birebir ve örten</b> (yani birim eşleme) fonksiyonlar için tanımlıdır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=2x+3$ fonksiyonunun tersini bulunuz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$y=2x+3\Rightarrow x=\dfrac{y-3}{2}$. $x$ ve $y$ yer değiştirilirse $f^{-1}(x)=\mathbf{\dfrac{x-3}{2}}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t73">
+  <div class="topic-head"><span class="t-num">73</span><h3>Fonksiyon Grafikleri ile İlgili Uygulamalar</h3></div>
+  <p>Bir $f(x)$ grafiğinin ötelenmiş hali $f(x-a)+b$: grafiği $a$ birim sağa (yatay), $b$ birim yukarı (dikey) kaydırır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$f(x)=x^2$ grafiği 2 birim sağa, 3 birim aşağı ötelenirse yeni fonksiyon nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Sağa 2, aşağı 3 öteleme: $g(x)=\mathbf{(x-2)^2-3}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u9">
+  <div class="u-formula" aria-hidden="true">$P(x)$</div>
+  <div class="u-eyebrow">Ünite 09 · 9 Konu</div>
+  <h2>Polinomlar</h2>
+  <p>Polinom işlemlerinden özdeşliklere; çarpanlara ayırma teknikleri.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t74">
+  <div class="topic-head"><span class="t-num">74</span><h3>Polinom Kavramı</h3></div>
+  <p>$P(x)=a_nx^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0$ biçimindeki, üsleri doğal sayı olan ifadelere <b>polinom</b> denir. En yüksek üslü terimin üssüne <b>derece</b>, o terimin katsayısına <b>baş katsayı</b>, $x$ içermeyen terime <b>sabit terim</b> denir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$P(x)=3x^4-2x^2+5$ polinomunun derecesi ve baş katsayısı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Derece $=\mathbf4$, baş katsayı $=\mathbf3$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t75">
+  <div class="topic-head"><span class="t-num">75</span><h3>Polinomlarda Toplama, Çıkarma ve Çarpma İşlemleri</h3></div>
+  <p>Toplama/çıkarmada yalnızca <b>aynı dereceli terimler</b> birleştirilir. Çarpmada ise <b>dağılma özelliği</b> kullanılarak her terim diğer polinomun her terimiyle çarpılır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$(2x+3)(x-1)$ çarpımı nedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$2x\cdot x+2x\cdot(-1)+3\cdot x+3\cdot(-1)=2x^2-2x+3x-3=\mathbf{2x^2+x-3}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t76">
+  <div class="topic-head"><span class="t-num">76</span><h3>Polinomlarda Bölme İşlemi</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$P(x)=D(x)\cdot Q(x)+K(x)\qquad \text{derece}(K)&lt;\text{derece}(D)$$
+    <p>($P$: bölünen, $D$: bölen, $Q$: bölüm, $K$: kalan)</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$(x^2+3x+2)\div(x+1)$ işleminin bölümü kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$x^2+3x+2=(x+1)(x+2)$ olduğundan bölüm $=\mathbf{x+2}$, kalan $=0$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t77">
+  <div class="topic-head"><span class="t-num">77</span><h3>Polinomlarda Bölme İşlemi Yapmadan Kalan Bulma</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül · Kalan Teoremi</div>
+    <p>$P(x)$ polinomunun $(x-a)$ ile bölümünden kalan, $P(a)$'ya eşittir.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$P(x)=x^3-2x+4$ polinomunun $(x-2)$'ye bölümünden kalan kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$P(2)=2^3-2(2)+4=8-4+4=\mathbf8$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t78">
+  <div class="topic-head"><span class="t-num">78</span><h3>Ortak Çarpan Parantezine Alma</h3></div>
+  <p>Bir ifadedeki tüm terimlerin ortak çarpanı belirlenip parantez dışına alınır: $ax+ay=a(x+y)$.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$6x^2y-9xy^2$ ifadesini çarpanlarına ayırınız.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Ortak çarpan $3xy$: $\mathbf{3xy(2x-3y)}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t79">
+  <div class="topic-head"><span class="t-num">79</span><h3>Tam Kare ve İki Kare Farkı Özdeşlikleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$(a+b)^2=a^2+2ab+b^2\qquad (a-b)^2=a^2-2ab+b^2\qquad a^2-b^2=(a-b)(a+b)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x^2-49$ ifadesini çarpanlarına ayırınız.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>İki kare farkı: $\mathbf{(x-7)(x+7)}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t80">
+  <div class="topic-head"><span class="t-num">80</span><h3>Tam Küp, İki Küp Farkı ve Toplamı Özdeşlikleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$(a+b)^3=a^3+3a^2b+3ab^2+b^3\qquad (a-b)^3=a^3-3a^2b+3ab^2-b^3$$
+    $$a^3-b^3=(a-b)(a^2+ab+b^2)\qquad a^3+b^3=(a+b)(a^2-ab+b^2)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x^3-8$ ifadesini çarpanlarına ayırınız.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$x^3-8=x^3-2^3=\mathbf{(x-2)(x^2+2x+4)}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t81">
+  <div class="topic-head"><span class="t-num">81</span><h3>Üç Terimli İfadelerin Çarpanlara Ayrılması</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$x^2+(a+b)x+ab=(x+a)(x+b)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x^2+7x+12$ ifadesini çarpanlarına ayırınız.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Toplamı 7, çarpımı 12 olan sayılar 3 ve 4'tür: $\mathbf{(x+3)(x+4)}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t82">
+  <div class="topic-head"><span class="t-num">82</span><h3>Rasyonel İfadelerin Sadeleştirilmesi</h3></div>
+  <p>Pay ve payda çarpanlarına ayrılıp ortak çarpanlar sadeleştirilir. Sadeleştirme sırasında paydayı sıfır yapan değerler tanım kümesi dışında bırakılır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\dfrac{x^2-9}{x^2-x-6}$ ifadesini sadeleştiriniz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{(x-3)(x+3)}{(x-3)(x+2)}=\mathbf{\dfrac{x+3}{x+2}}$ &nbsp;($x\neq3,\,x\neq-2$).</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u10">
+  <div class="u-formula" aria-hidden="true">$x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$</div>
+  <div class="u-eyebrow">Ünite 10 · 5 Konu</div>
+  <h2>İkinci Dereceden Denklemler</h2>
+  <p>Çarpanlara ayırmadan diskriminanta, karmaşık köklere ve kök-katsayı ilişkisine.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t83">
+  <div class="topic-head"><span class="t-num">83</span><h3>İkinci Dereceden Bir Bilinmeyenli Denklemler</h3></div>
+  <p>$ax^2+bx+c=0$ ($a\neq0$) biçimindeki denklemler <b>çarpanlara ayırma</b>, <b>tam kareye tamamlama</b> ya da <b>kök formülü</b> ile çözülür.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x^2-5x+6=0$ denklemini çözünüz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$(x-2)(x-3)=0\Rightarrow x=\mathbf2$ veya $x=\mathbf3$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t84">
+  <div class="topic-head"><span class="t-num">84</span><h3>İkinci Dereceden Bir Bilinmeyenli Denklemlerin Çözüm Kümesi</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül · Kök Formülü</div>
+    $$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$2x^2-3x-2=0$ denkleminin çözüm kümesini bulunuz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\Delta=(-3)^2-4(2)(-2)=9+16=25$. $x=\dfrac{3\pm5}{4}$. $x=2$ veya $x=-\dfrac12$. Çözüm kümesi: $\mathbf{\left\{-\dfrac12,\,2\right\}}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t85">
+  <div class="topic-head"><span class="t-num">85</span><h3>Diskriminant Kavramı ve Diskriminantın Kullanılması</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\Delta=b^2-4ac$$
+    <p>$\Delta&gt;0$: iki farklı gerçek kök &nbsp;·&nbsp; $\Delta=0$: bir (çakışık) gerçek kök &nbsp;·&nbsp; $\Delta&lt;0$: gerçek kök yoktur (karmaşık kökler)</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x^2+4x+5=0$ denkleminin kaç gerçek kökü vardır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\Delta=16-20=-4&lt;0$. Denklemin <b>gerçek kökü yoktur</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t86">
+  <div class="topic-head"><span class="t-num">86</span><h3>Karmaşık Sayılar</h3></div>
+  <p>$\Delta&lt;0$ olduğunda ikinci dereceden denklemin kökleri <b>karmaşık sayı</b> kümesindedir. Sanal birim $i$, $i^2=-1$ eşitliğini sağlar; bir karmaşık sayı $a+bi$ biçiminde yazılır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x^2+4x+5=0$ denkleminin karmaşık köklerini bulunuz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$x=\dfrac{-4\pm\sqrt{-4}}{2}=\dfrac{-4\pm2i}{2}=\mathbf{-2\pm i}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t87">
+  <div class="topic-head"><span class="t-num">87</span><h3>İkinci Dereceden Bir Bilinmeyenli Denklemlerde Kök Katsayı İlişkisi</h3></div>
+  <p>$ax^2+bx+c=0$ denkleminin kökleri $x_1,x_2$ ise, kökleri denklemi çözmeden bulmaya yarayan bağıntılar (Vieta bağıntıları):</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$x_1+x_2=-\frac{b}{a}\qquad x_1\cdot x_2=\frac{c}{a}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$x^2-7x+10=0$ denkleminin köklerinin toplamı ve çarpımı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Toplam $=-\dfrac{-7}{1}=\mathbf7$, çarpım $=\dfrac{10}{1}=\mathbf{10}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u11">
+  <div class="u-formula" aria-hidden="true">$\bar{x}$</div>
+  <div class="u-eyebrow">Ünite 11 · 4 Konu</div>
+  <h2>Veri ve İstatistik</h2>
+  <p>Veri türlerinden merkezi eğilim ölçülerine, histogram ve grafik okumaya.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t88">
+  <div class="topic-head"><span class="t-num">88</span><h3>Veri</h3></div>
+  <p>Bir araştırma veya gözlem sonucunda elde edilen sayısal ya da sayısal olmayan bilgilere <b>veri</b> denir. Bir değerin veri kümesinde kaç kez tekrarlandığına <b>sıklık (frekans)</b> denir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir sınavdan alınan notlar: $70,\,80,\,70,\,90,\,80,\,70$. 70 notunun frekansı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>70 sayısı verilerde <b>3 kez</b> geçmektedir.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t89">
+  <div class="topic-head"><span class="t-num">89</span><h3>Merkezi Yayılım Ölçüleri</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p><b>Aritmetik ortalama:</b> $\dfrac{\text{verilerin toplamı}}{\text{veri sayısı}}$ &nbsp;·&nbsp; <b>Medyan:</b> sıralı verinin ortanca değeri &nbsp;·&nbsp; <b>Mod:</b> en sık tekrar eden değer &nbsp;·&nbsp; <b>Açıklık:</b> en büyük $-$ en küçük değer</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$4,\,7,\,8,\,8,\,10,\,13$ veri kümesinin ortalamasını, medyanını, modunu ve açıklığını bulunuz.</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Ortalama $=\dfrac{4+7+8+8+10+13}{6}=\dfrac{50}{6}\approx\mathbf{8{,}33}$. Medyan (ortadaki iki değerin ortalaması) $=\dfrac{8+8}{2}=\mathbf8$. Mod $=\mathbf8$ (en sık tekrar eden). Açıklık $=13-4=\mathbf9$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t90">
+  <div class="topic-head"><span class="t-num">90</span><h3>Histogram</h3></div>
+  <p>Sürekli (gruplandırılmış) sayısal verilerin sütunlarla gösterildiği grafik türüdür. Her sütunun taban genişliği bir veri aralığını, yüksekliği ise o aralığa düşen frekansı gösterir; sütunlar arasında (bitişik sınıflar olduğundan) boşluk bırakılmaz.</p>
+</article>
+
+<article class="topic" id="t91">
+  <div class="topic-head"><span class="t-num">91</span><h3>Grafik Çeşitleri</h3></div>
+  <ul>
+    <li><b>Sütun grafiği:</b> kategoriler arası karşılaştırma için.</li>
+    <li><b>Çizgi grafiği:</b> bir büyüklüğün zaman içindeki değişimini göstermek için.</li>
+    <li><b>Daire (pasta) grafiği:</b> bir bütünün parçalara oranını göstermek için.</li>
+    <li><b>Serpme (dağılım) grafiği:</b> iki değişken arasındaki ilişkiyi göstermek için.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir ürünün aylara göre satış değişimini göstermek için en uygun grafik türü hangisidir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Zaman içindeki değişim gösterileceğinden en uygun tür <b>çizgi grafiğidir</b>.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u12">
+  <div class="u-formula" aria-hidden="true">$a^2+b^2=c^2$</div>
+  <div class="u-eyebrow">Ünite 12 · 22 Konu</div>
+  <h2>Geometri: Açılar ve Üçgenler</h2>
+  <p>Açı özelliklerinden üçgen eşliği ve benzerliğine, trigonometriye ve alan hesaplarına.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t92">
+  <div class="topic-head"><span class="t-num">92</span><h3>Açı Kavramı ve Çeşitleri</h3></div>
+  <ul>
+    <li><b>Dar açı:</b> $0^\circ$-$90^\circ$ arası &nbsp;·&nbsp; <b>Dik açı:</b> $90^\circ$ &nbsp;·&nbsp; <b>Geniş açı:</b> $90^\circ$-$180^\circ$ arası &nbsp;·&nbsp; <b>Doğru açı:</b> $180^\circ$ &nbsp;·&nbsp; <b>Tam açı:</b> $360^\circ$</li>
+    <li><b>Tümler açılar:</b> toplamları $90^\circ$ &nbsp;·&nbsp; <b>Bütünler açılar:</b> toplamları $180^\circ$</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir açının tümleri, kendisinin 2 katı olduğuna göre bu açı kaç derecedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$x+2x=90\Rightarrow x=\mathbf{30^\circ}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t93">
+  <div class="topic-head"><span class="t-num">93</span><h3>Paralel İki Doğrunun Bir Kesenle Yaptığı Açılar</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p><b>Yöndeş açılar</b> eşittir. <b>İç ters açılar</b> eşittir. <b>Dış ters açılar</b> eşittir. <b>Aynı taraftaki iç açılar</b> bütünlerdir (toplamı $180^\circ$).</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Paralel iki doğru bir kesenle kesiliyor. İç ters açılardan biri $65^\circ$ ise diğeri kaç derecedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>İç ters açılar eşit olduğundan diğeri de $\mathbf{65^\circ}$'dir.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t94">
+  <div class="topic-head"><span class="t-num">94</span><h3>Üçgende Açılar</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>İç açılar toplamı: $\hat A+\hat B+\hat C=180^\circ$ &nbsp;·&nbsp; Dış açı, kendisine komşu olmayan iki iç açının toplamına eşittir &nbsp;·&nbsp; Dış açılar toplamı $=360^\circ$.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir üçgenin iki iç açısı $50^\circ$ ve $60^\circ$ ise üçüncü iç açı kaç derecedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$180-50-60=\mathbf{70^\circ}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t95">
+  <div class="topic-head"><span class="t-num">95</span><h3>İkizkenar ve Eşkenar Üçgende Açı Özellikleri</h3></div>
+  <ul>
+    <li><b>İkizkenar üçgen:</b> eşit kenarların karşısındaki açılar da eşittir (taban açıları eşit).</li>
+    <li><b>Eşkenar üçgen:</b> tüm kenarlar ve tüm açılar eşittir; her açı $60^\circ$'dir.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>İkizkenar bir üçgende tepe açısı $40^\circ$ ise taban açılarının her biri kaç derecedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{180-40}{2}=\mathbf{70^\circ}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t96">
+  <div class="topic-head"><span class="t-num">96</span><h3>Üçgende Açı - Kenar Bağıntıları</h3></div>
+  <p>Bir üçgende <b>büyük açının karşısında büyük kenar</b>, küçük açının karşısında küçük kenar bulunur. Eşit açıların karşısındaki kenarlar da eşittir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir üçgenin kenarları $a=5,\ b=7,\ c=9$ birimdir. En büyük açı hangi kenarın karşısındadır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>En büyük kenar $c=9$ olduğundan, en büyük açı <b>$c$ kenarının karşısındaki açıdır ($\hat C$)</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t97">
+  <div class="topic-head"><span class="t-num">97</span><h3>Üçgen Eşitsizliği</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$|a-b|&lt;c&lt;a+b$$
+    <p>(Bir üçgenin herhangi iki kenarının farkının mutlak değeri üçüncü kenardan küçük, toplamı üçüncü kenardan büyük olmalıdır.)</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Kenarları $4$, $7$ ve $x$ olan bir üçgende $x$ kaç farklı tam sayı değeri alabilir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$7-4&lt;x&lt;7+4\Rightarrow 3&lt;x&lt;11$. Tam sayı değerler: $4,5,6,7,8,9,10$ → <b>7 farklı değer</b>.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t98">
+  <div class="topic-head"><span class="t-num">98</span><h3>Üçgenlerde Eşlik</h3></div>
+  <p>Karşılıklı tüm kenarları ve açıları birebir eşit olan üçgenlere <b>eş üçgenler</b> denir. Eşlik ispatında kullanılan temel kurallar:</p>
+  <ul>
+    <li><b>K.K.K:</b> üç kenar eşitliği</li>
+    <li><b>K.A.K:</b> iki kenar ve aralarındaki açının eşitliği</li>
+    <li><b>A.K.A:</b> iki açı ve aralarındaki kenarın eşitliği</li>
+    <li><b>A.A.K:</b> iki açı ve bir kenarın (karşılıklı konumda) eşitliği</li>
+  </ul>
+</article>
+
+<article class="topic" id="t99">
+  <div class="topic-head"><span class="t-num">99</span><h3>Üçgenlerde Benzerlik</h3></div>
+  <p>Karşılık gelen açıları eşit, karşılık gelen kenarları orantılı olan üçgenlere <b>benzer üçgenler</b> denir ($\sim$ ile gösterilir). Benzerlik kuralları: <b>A.A</b> (iki açı eşitliği), <b>K.K.K</b> (üç kenarın orantılı olması), <b>K.A.K</b> (iki kenarın orantılı, aralarındaki açının eşit olması).</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>Benzerlik oranı $k$ olan iki benzer üçgende: uzunluk oranları $k$, <b>alan oranları $k^2$</b>'dir.</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Benzerlik oranı $\dfrac23$ olan iki üçgenin alanları oranı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Alan oranı $=\left(\dfrac23\right)^2=\mathbf{\dfrac49}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t100">
+  <div class="topic-head"><span class="t-num">100</span><h3>Üçgenlerde Temel Benzerlik (Temel Orantı Teoremi)</h3></div>
+  <p>Bir üçgende, bir kenara paralel çizilen doğru diğer iki kenarı <b>orantılı</b> parçalara böler.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>$ABC$ üçgeninde $D\in[AB]$, $E\in[AC]$ ve $DE\parallel BC$ ise: $\quad \dfrac{AD}{DB}=\dfrac{AE}{EC}$</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$ABC$ üçgeninde $DE\parallel BC$, $AD=4$, $DB=2$, $AE=6$ ise $EC$ kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{4}{2}=\dfrac{6}{EC}\Rightarrow EC=\mathbf3$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t101">
+  <div class="topic-head"><span class="t-num">101</span><h3>Üçgenlerde Benzerlik Uygulamaları</h3></div>
+  <p>Benzerlik, özellikle doğrudan ölçülemeyen uzunlukların (bina yüksekliği, nehir genişliği gibi) gölge boyu ya da benzer üçgen kurma yöntemiyle bulunmasında kullanılır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Aynı anda boyu 1,5 m olan bir kişinin gölgesi 2 m, bir binanın gölgesi 40 m ölçülüyor. Bina kaç metredir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Benzer üçgenler: $\dfrac{1{,}5}{2}=\dfrac{h}{40}\Rightarrow h=\mathbf{30\ m}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t102">
+  <div class="topic-head"><span class="t-num">102</span><h3>Üçgende Açıortay (İç Açıortay)</h3></div>
+  <p>Bir açıyı iki eş açıya bölen ışına <b>açıortay</b> denir. $ABC$ üçgeninde $\hat A$'nın iç açıortayı $[BC]$'yi $D$ noktasında kessin.</p>
+  <div class="box formula">
+    <div class="flabel">Formül · İç Açıortay Teoremi</div>
+    $$\frac{BD}{DC}=\frac{AB}{AC}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$AB=6$, $AC=9$, $BC=10$ ve $AD$ iç açıortay ise $BD$ kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{BD}{DC}=\dfrac{6}{9}=\dfrac23$ ve $BD+DC=10$ olduğundan $BD=\mathbf4$, $DC=6$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t103">
+  <div class="topic-head"><span class="t-num">103</span><h3>Üçgende Açıortay (Dış Açıortay)</h3></div>
+  <p>Bir dış açıyı iki eş açıya bölen ışına <b>dış açıortay</b> denir. $\hat A$'nın dış açıortayı $[BC]$'nin uzantısını $E$ noktasında kesiyorsa (üçgen ikizkenar değilse):</p>
+  <div class="box formula">
+    <div class="flabel">Formül · Dış Açıortay Teoremi</div>
+    $$\frac{EB}{EC}=\frac{AB}{AC}$$
+  </div>
+  <div class="box warn">
+    <div class="flabel">Dikkat</div>
+    <p>$AB=AC$ (ikizkenar) olduğunda dış açıortay, $BC$ kenarına paralel olur ve onu hiç kesmez.</p>
+  </div>
+</article>
+
+<article class="topic" id="t104">
+  <div class="topic-head"><span class="t-num">104</span><h3>Üçgende Kenarortay</h3></div>
+  <p>Bir köşeyi karşı kenarın orta noktasına birleştiren doğru parçasına <b>kenarortay</b> denir. Üç kenarortayın kesim noktasına <b>ağırlık merkezi ($G$)</b> denir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>Ağırlık merkezi her kenarortayı köşeden itibaren $2:1$ oranında böler (köşeye yakın parça uzun kenardır).</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir üçgende tepe köşesinden ağırlık merkezine olan uzaklık 8 cm'dir. Ağırlık merkezinden kenarın orta noktasına olan uzaklık kaç cm'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Oran $2:1$ olduğundan $8=2k\Rightarrow k=4$. Kenara olan uzaklık $=\mathbf{4\ cm}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t105">
+  <div class="topic-head"><span class="t-num">105</span><h3>Üçgende Yükseklik</h3></div>
+  <p>Bir köşeden karşı kenara (ya da kenarın uzantısına) çizilen dik doğru parçasına <b>yükseklik</b> denir. Dar açılı üçgende üç yükseklik üçgen içinde, geniş açılı üçgende ise yükseklikler üçgen dışında kesişir.</p>
+</article>
+
+<article class="topic" id="t106">
+  <div class="topic-head"><span class="t-num">106</span><h3>Üçgende Kenar Orta Dikme</h3></div>
+  <p>Bir kenarın orta noktasından o kenara dik olarak çizilen doğruya <b>kenar orta dikme</b> denir. Üç kenar orta dikmenin kesim noktası, üçgenin <b>çevrel çemberinin merkezi</b>dir ve bu noktanın üç köşeye olan uzaklığı eşittir (çevrel çember yarıçapı).</p>
+</article>
+
+<article class="topic" id="t107">
+  <div class="topic-head"><span class="t-num">107</span><h3>Dik Üçgende Pisagor Teoremi</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$a^2+b^2=c^2$$
+    <p>($a,b$: dik kenarlar, $c$: hipotenüs — dik açının karşısındaki en uzun kenar)</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Dik kenarları 3 cm ve 4 cm olan bir dik üçgende hipotenüs kaç cm'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$c=\sqrt{3^2+4^2}=\sqrt{9+16}=\sqrt{25}=\mathbf5\ \text{cm}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t108">
+  <div class="topic-head"><span class="t-num">108</span><h3>Öklid'in Çalışmaları (Öklid Bağıntıları)</h3></div>
+  <p>Dik üçgende hipotenüse ait yükseklik $h$, hipotenüsü $p$ ve $k$ parçalarına ($c=p+k$) böler.</p>
+  <div class="box formula">
+    <div class="flabel">Formül · Öklid Bağıntıları</div>
+    $$h^2=p\cdot k \qquad a^2=p\cdot c \qquad b^2=k\cdot c$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Dik üçgende hipotenüs üzerindeki yüksekliğin ayırdığı parçalar $p=4$, $k=9$ ise yükseklik $h$ kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$h^2=4\times9=36\Rightarrow h=\mathbf6$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t109">
+  <div class="topic-head"><span class="t-num">109</span><h3>Trigonometrik Oranlar</h3></div>
+  <p>Dik üçgende bir dar açının trigonometrik oranları, kenar uzunluklarının birbirine bölünmesiyle tanımlanır.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\sin A=\frac{\text{karşı kenar}}{\text{hipotenüs}}\quad \cos A=\frac{\text{komşu kenar}}{\text{hipotenüs}}\quad \tan A=\frac{\text{karşı kenar}}{\text{komşu kenar}}\quad \cot A=\frac{1}{\tan A}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Dik üçgende bir dar açının karşısındaki kenar 3 cm, hipotenüs 5 cm ise bu açının sinüsü kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\sin A=\dfrac{3}{5}=\mathbf{0{,}6}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t110">
+  <div class="topic-head"><span class="t-num">110</span><h3>30°, 45°, 60°'nin Trigonometrik Oranları</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül · Özel Açı Tablosu</div>
+    $$\sin30^\circ=\frac12,\ \cos30^\circ=\frac{\sqrt3}{2},\ \tan30^\circ=\frac{\sqrt3}{3}$$
+    $$\sin45^\circ=\cos45^\circ=\frac{\sqrt2}{2},\ \tan45^\circ=1$$
+    $$\sin60^\circ=\frac{\sqrt3}{2},\ \cos60^\circ=\frac12,\ \tan60^\circ=\sqrt3$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>$\sin30^\circ+\cos60^\circ$ toplamı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac12+\dfrac12=\mathbf1$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t111">
+  <div class="topic-head"><span class="t-num">111</span><h3>Birim Çember</h3></div>
+  <p>Merkezi orijin, yarıçapı 1 birim olan çembere <b>birim çember</b> denir. Birim çember üzerinde, orijinle yaptığı açı $\theta$ olan noktanın koordinatları $(\cos\theta,\ \sin\theta)$'dır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Birim çember üzerinde $90^\circ$'lik açıya karşılık gelen nokta neresidir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$(\cos90^\circ,\sin90^\circ)=\mathbf{(0,\,1)}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t112">
+  <div class="topic-head"><span class="t-num">112</span><h3>Üçgende Alan</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Alan=\frac{\text{taban}\times\text{yükseklik}}{2}\qquad Alan=\frac12\,a\,b\,\sin C\qquad Alan=\sqrt{s(s-a)(s-b)(s-c)}\ \ (\text{Heron})$$
+    <p>($s$: üçgenin yarı çevresi)</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir üçgende iki kenar $6$ cm ve $8$ cm, aralarındaki açı $90^\circ$ ise üçgenin alanı kaç cm²'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$Alan=\dfrac12\times6\times8\times\sin90^\circ=\dfrac{48}{2}=\mathbf{24\ cm^2}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t113">
+  <div class="topic-head"><span class="t-num">113</span><h3>Üçgende Alan Uygulamaları</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p><b>İç teğet çember yarıçapı ile:</b> $Alan=r\cdot s$ &nbsp;($s$: yarı çevre) &nbsp;·&nbsp; <b>Çevrel çember yarıçapı ile:</b> $Alan=\dfrac{a\,b\,c}{4R}$</p>
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Çevresi 24 cm, iç teğet çemberinin yarıçapı 2 cm olan bir üçgenin alanı kaç cm²'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Yarı çevre $s=12$. $Alan=r\cdot s=2\times12=\mathbf{24\ cm^2}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u13">
+  <div class="u-formula" aria-hidden="true">$(n-2)\times180^\circ$</div>
+  <div class="u-eyebrow">Ünite 13 · 12 Konu</div>
+  <h2>Çokgenler ve Dörtgenler</h2>
+  <p>Genel çokgen kurallarından özel dörtgenlerin açı, uzunluk ve alan hesaplarına.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t114">
+  <div class="topic-head"><span class="t-num">114</span><h3>Çokgenler</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$\text{İç açılar toplamı}=(n-2)\times180^\circ \qquad \text{Dış açılar toplamı}=360^\circ \qquad \text{Köşegen sayısı}=\frac{n(n-3)}{2}$$
+  </div>
+  <p>Tüm kenarları ve tüm açıları birbirine eşit olan çokgene <b>düzgün çokgen</b> denir.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Düzgün bir altıgenin bir iç açısı kaç derecedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>İç açılar toplamı $=(6-2)\times180=720^\circ$. Bir açı $=\dfrac{720}{6}=\mathbf{120^\circ}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t115">
+  <div class="topic-head"><span class="t-num">115</span><h3>Dörtgenler ve Özellikleri</h3></div>
+  <p>Dört kenarlı çokgenlere <b>dörtgen</b> denir. İç açılar toplamı $360^\circ$'dir; 2 köşegeni vardır.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir dörtgenin üç açısı $80^\circ,\,90^\circ,\,100^\circ$ ise dördüncü açı kaç derecedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$360-(80+90+100)=360-270=\mathbf{90^\circ}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t116">
+  <div class="topic-head"><span class="t-num">116</span><h3>Özel Dörtgenler</h3></div>
+  <p>Kenar/açı özelliklerine göre başlıca özel dörtgen türleri: <b>paralelkenar</b> (karşılıklı kenarlar paralel), <b>dikdörtgen</b> (tüm açılar $90^\circ$), <b>kare</b> (tüm kenarlar ve açılar eşit), <b>eşkenar dörtgen</b> (tüm kenarlar eşit), <b>yamuk</b> (yalnızca bir çift kenarı paralel) ve <b>deltoid</b> (iki çift bitişik kenarı eşit).</p>
+</article>
+
+<article class="topic" id="t117">
+  <div class="topic-head"><span class="t-num">117</span><h3>Yamuğun Alanı</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Alan=\frac{(\text{taban}_1+\text{taban}_2)}{2}\times\text{yükseklik}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Paralel kenarları 6 cm ve 10 cm, yüksekliği 5 cm olan yamuğun alanı kaç cm²'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{6+10}{2}\times5=8\times5=\mathbf{40\ cm^2}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t118">
+  <div class="topic-head"><span class="t-num">118</span><h3>İkizkenar ve Dik Yamuk</h3></div>
+  <ul>
+    <li><b>İkizkenar yamuk:</b> yan kenarları eşittir; taban açıları ikişer ikişer eşit, köşegenleri birbirine eşittir.</li>
+    <li><b>Dik yamuk:</b> yan kenarlardan biri tabanlara diktir ($90^\circ$ açı yapar).</li>
+  </ul>
+</article>
+
+<article class="topic" id="t119">
+  <div class="topic-head"><span class="t-num">119</span><h3>Paralelkenarda Açı ve Uzunluk</h3></div>
+  <ul>
+    <li>Karşılıklı kenarlar birbirine eşit ve paraleldir.</li>
+    <li>Karşılıklı açılar eşit, komşu açılar bütünlerdir (toplamları $180^\circ$).</li>
+    <li>Köşegenler birbirini ortalar.</li>
+  </ul>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Bir paralelkenarda bir açı $70^\circ$ ise ona komşu açı kaç derecedir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$180-70=\mathbf{110^\circ}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t120">
+  <div class="topic-head"><span class="t-num">120</span><h3>Paralelkenarda Alan</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Alan=\text{taban}\times\text{yükseklik}=a\cdot b\cdot\sin\theta$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Kenarları 5 cm ve 8 cm, aralarındaki açı $30^\circ$ olan paralelkenarın alanı kaç cm²'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$5\times8\times\sin30^\circ=40\times0{,}5=\mathbf{20\ cm^2}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t121">
+  <div class="topic-head"><span class="t-num">121</span><h3>Eşkenar Dörtgen</h3></div>
+  <p>Tüm kenarları eşit olan paralelkenara <b>eşkenar dörtgen</b> denir. Köşegenleri birbirini dik açıyla ortalar.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Alan=\frac{d_1\times d_2}{2}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Köşegenleri 6 cm ve 8 cm olan eşkenar dörtgenin alanı kaç cm²'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{6\times8}{2}=\mathbf{24\ cm^2}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t122">
+  <div class="topic-head"><span class="t-num">122</span><h3>Dikdörtgende Açı ve Uzunluk</h3></div>
+  <p>Tüm açıları $90^\circ$ olan paralelkenara <b>dikdörtgen</b> denir. Köşegenleri birbirine eşittir ve birbirini ortalar.</p>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Kenarları 6 cm ve 8 cm olan bir dikdörtgenin köşegen uzunluğu kaç cm'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Pisagor teoremi: $\sqrt{6^2+8^2}=\sqrt{100}=\mathbf{10\ cm}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t123">
+  <div class="topic-head"><span class="t-num">123</span><h3>Dikdörtgende Alan</h3></div>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Alan=a\times b \qquad Çevre=2(a+b)$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Kenarları 7 cm ve 5 cm olan dikdörtgenin alanı ve çevresi kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Alan $=7\times5=\mathbf{35\ cm^2}$. Çevre $=2(7+5)=\mathbf{24\ cm}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t124">
+  <div class="topic-head"><span class="t-num">124</span><h3>Kare</h3></div>
+  <p>Tüm kenarları eşit ve tüm açıları $90^\circ$ olan dörtgene <b>kare</b> denir (hem dikdörtgen hem eşkenar dörtgendir).</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Alan=a^2 \qquad \text{Köşegen}=a\sqrt2 \qquad Çevre=4a$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Kenar uzunluğu 5 cm olan bir karenin alanı ve köşegen uzunluğu kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Alan $=5^2=\mathbf{25\ cm^2}$. Köşegen $=\mathbf{5\sqrt2\ cm}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t125">
+  <div class="topic-head"><span class="t-num">125</span><h3>Deltoid</h3></div>
+  <p>İki çift bitişik kenarı birbirine eşit olan dörtgene <b>deltoid</b> denir. Köşegenlerden biri diğerini dik açıyla ortalar.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Alan=\frac{d_1\times d_2}{2}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Köşegenleri 10 cm ve 6 cm olan bir deltoidin alanı kaç cm²'dir?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{10\times6}{2}=\mathbf{30\ cm^2}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="unit-divider" id="u14">
+  <div class="u-formula" aria-hidden="true">$V=a^3$</div>
+  <div class="u-eyebrow">Ünite 14 · 4 Konu</div>
+  <h2>Katı Cisimler</h2>
+  <p>Dik prizmalardan düzgün dört yüzlüye; yüzey alanı ve hacim hesapları.</p>
+</section>
+
+<div class="topics-wrap">
+
+<article class="topic" id="t126">
+  <div class="topic-head"><span class="t-num">126</span><h3>Dik Prizmalar</h3></div>
+  <p>Taban ayrıtlarına dik yanal ayrıtları olan prizmalara <b>dik prizma</b> denir. Yanal yüzeyleri dikdörtgendir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Hacim=\text{Taban Alanı}\times\text{Yükseklik}\qquad Yüzey\ Alanı=2\times\text{Taban Alanı}+\text{Yanal Alan}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Taban alanı 20 cm², yüksekliği 6 cm olan bir dik prizmanın hacmi kaç cm³'tür?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$20\times6=\mathbf{120\ cm^3}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t127">
+  <div class="topic-head"><span class="t-num">127</span><h3>Küp</h3></div>
+  <p>Tüm ayrıtları birbirine eşit olan dik prizmaya <b>küp</b> denir; 6 yüzü de karedir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Hacim=a^3 \qquad Yüzey\ Alanı=6a^2 \qquad \text{Cisim Köşegeni}=a\sqrt3$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Ayrıt uzunluğu 4 cm olan bir küpün hacmi ve yüzey alanı kaçtır?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>Hacim $=4^3=\mathbf{64\ cm^3}$. Yüzey alanı $=6\times4^2=\mathbf{96\ cm^2}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t128">
+  <div class="topic-head"><span class="t-num">128</span><h3>Dik Piramit</h3></div>
+  <p>Tabanı çokgen olan, tepe noktası tabanın merkezinin tam üzerinde bulunan piramide <b>dik piramit</b> denir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    $$Hacim=\frac13\times\text{Taban Alanı}\times\text{Yükseklik}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Taban alanı 30 cm², yüksekliği 9 cm olan dik piramidin hacmi kaç cm³'tür?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac13\times30\times9=\mathbf{90\ cm^3}$.</p></div>
+  </div>
+</article>
+
+<article class="topic" id="t129">
+  <div class="topic-head"><span class="t-num">129</span><h3>Düzgün Dört Yüzlü</h3></div>
+  <p>Dört yüzü de eşkenar üçgen olan, tüm ayrıtları eşit uzunlukta olan piramide <b>düzgün dört yüzlü (düzgün tetrahedron)</b> denir.</p>
+  <div class="box formula">
+    <div class="flabel">Formül</div>
+    <p>Ayrıt uzunluğu $a$ olan düzgün dört yüzlünün hacmi:</p>
+    $$Hacim=\frac{a^3\sqrt2}{12}$$
+  </div>
+  <div class="box example">
+    <div class="flabel">Örnek</div>
+    <p>Ayrıt uzunluğu 2 cm olan düzgün dört yüzlünün hacmi kaç cm³'tür?</p>
+    <div class="box solution"><div class="flabel">Çözüm</div><p>$\dfrac{2^3\sqrt2}{12}=\dfrac{8\sqrt2}{12}=\mathbf{\dfrac{2\sqrt2}{3}\ cm^3}$.</p></div>
+  </div>
+</article>
+
+</div>
+
+<section class="intro" style="max-width:100%; background:var(--paper-card); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:20px;">
+  <div class="eyebrow">Kapanış</div>
+  <h2>Sınav Çalışma İpuçları</h2>
+  <div class="legend">
+    <div class="item"><div class="swatch" style="background:var(--pine);">1</div><div class="txt"><b>Formülleri anlayarak öğren</b><span>Ezber yerine formülün nereden geldiğini kavra; kalıcılığı artırır.</span></div></div>
+    <div class="item"><div class="swatch" style="background:var(--gold-ink);">2</div><div class="txt"><b>Her konudan sonra soru çöz</b><span>Konuyu okumak yetmez; örnekleri kendi başına tekrar çöz.</span></div></div>
+    <div class="item"><div class="swatch" style="background:var(--rust);">3</div><div class="txt"><b>Hata defteri tut</b><span>Yanlış yaptığın soruları not al, dikkat kutularını tekrar oku.</span></div></div>
+    <div class="item"><div class="swatch" style="background:var(--ink);">4</div><div class="txt"><b>Geometriyi görselleştir</b><span>Her geometri sorusunda şekli kendin çiz; şekil çözümün yarısıdır.</span></div></div>
+  </div>
+</section>
+
+<footer class="doc-end">
+  <h3>TYT Matematik Konu Rehberi</h3>
+  <p>14 ünite · 129 konu · 1 ÖSYM soru tarzı analiz raporu · Kapsamlı çalışma kaynağı</p>
+</footer>
+
+</main>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Sayfa başına dön">↑</button>
+
+<!-- ===================== AI SORU ÜRETİCİ (Groq) ===================== -->
+<button class="ai-fab" id="aiFabBtn" type="button" aria-haspopup="dialog" aria-controls="aiModal">
+  <span class="ico" aria-hidden="true">✦</span>
+  <span class="lbl">AI Soru Üret</span>
+</button>
+
+<div class="ai-modal-overlay" id="aiModalOverlay">
+  <div class="ai-modal" id="aiModal" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
+    <button class="ai-modal-close" id="aiModalClose" type="button" aria-label="Kapat">✕</button>
+
+    <div class="ai-modal-head">
+      <div class="eyebrow">Yeni Nesil Soru Üretici</div>
+      <h2 id="aiModalTitle">AI ile Soru Üret</h2>
+      <p class="ai-modal-sub">Şu an okuduğun konudan, ÖSYM "Yeni Nesil" tarzında hikâyeli bir soru üretir. Groq API anahtarınla, tamamen ücretsiz.</p>
+    </div>
+
+    <div class="ai-topic-chip" id="aiTopicChip">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="aiTopicChipText">Aktif konu algılanıyor…</span>
+    </div>
+
+    <details class="ai-settings" id="aiSettingsBox">
+      <summary>API Ayarları <span class="ai-settings-state" id="aiSettingsState">— ayarlanmadı</span></summary>
+      <div class="ai-settings-body">
+        <label class="ai-field-label" for="aiApiKey">Groq API Anahtarı</label>
+        <div class="ai-key-row">
+          <input type="password" id="aiApiKey" class="ai-input" placeholder="gsk_..." autocomplete="off" spellcheck="false">
+          <button type="button" class="ai-key-toggle" id="aiKeyToggle" aria-label="Anahtarı göster/gizle">👁</button>
+        </div>
+        <p class="ai-hint-text">Anahtarın yalnızca bu tarayıcıda (localStorage) saklanır ve doğrudan Groq sunucularına gönderilir; başka hiçbir yere gitmez. Ücretsiz anahtar almak için <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a> adresini ziyaret edebilirsin.</p>
+        <button type="button" class="ai-btn ai-btn-ghost" id="aiSaveKey" style="width:100%;">Ayarı Kaydet</button>
+      </div>
+    </details>
+
+    <div class="ai-diff-label">
+      <label class="ai-field-label">Zorluk Seviyesi</label>
+      <span class="ai-diff-note" id="aiDiffNote">75-100 sn hedef</span>
+    </div>
+    <div class="ai-diff-row" id="aiDiffRow" role="group" aria-label="Zorluk seviyesi">
+      <button type="button" class="ai-diff-btn" data-diff="kolay">
+        <span class="lvl">Kolay</span>
+        <span class="sub">Tek adım</span>
+      </button>
+      <button type="button" class="ai-diff-btn active" data-diff="orta">
+        <span class="lvl">Orta</span>
+        <span class="sub">İki adım</span>
+      </button>
+      <button type="button" class="ai-diff-btn" data-diff="zor">
+        <span class="lvl">Zor</span>
+        <span class="sub">Çok adım</span>
+      </button>
+    </div>
+
+    <button type="button" class="ai-btn ai-btn-primary" id="aiGenerateBtn">
+      <span id="aiGenerateBtnText">Soru Üret</span>
+    </button>
+
+    <div class="ai-status" id="aiStatus" role="status" aria-live="polite"></div>
+
+    <div class="ai-output" id="aiOutput" hidden>
+      <div class="box ai-question" id="aiQuestionBlock">
+        <div class="flabel">Soru</div>
+        <div class="ai-block-body" id="aiQuestionText"></div>
+      </div>
+
+      <div class="ai-reveal-row">
+        <button type="button" class="ai-btn ai-btn-ghost ai-toggle-btn" id="aiHintToggle" aria-expanded="false">İpucunu Göster</button>
+        <button type="button" class="ai-btn ai-btn-ghost ai-toggle-btn" id="aiSolutionToggle" aria-expanded="false">Çözümü Göster</button>
+      </div>
+
+      <div class="box ai-hint" id="aiHintBlock" hidden>
+        <div class="flabel">İpucu</div>
+        <div class="ai-block-body" id="aiHintText"></div>
+      </div>
+
+      <div class="box ai-solution" id="aiSolutionBlock" hidden>
+        <div class="flabel">Çözüm</div>
+        <div class="ai-block-body" id="aiSolutionText"></div>
+      </div>
+
+      <button type="button" class="ai-btn ai-btn-ghost" id="aiRegenerateBtn" style="width:100%; margin-top:4px;">Yeni Soru Üret</button>
+    </div>
+  </div>
+</div>
+<!-- =================== /AI SORU ÜRETİCİ (Groq) ==================== -->
+
+<script>
+(function(){
+  'use strict';
+
+  /* =========================================================
+     1) Kenar çubuğu İÇİNDEKİLER'i belge yapısından üretir.
+        (innerHTML yerine DOM API'leri kullanılır; böylece
+        gerçek event listener'lar ve aria-* durumları eklenebilir.)
+     ========================================================= */
+  var list = document.getElementById('tocList');
+  var main = document.getElementById('main-content');
+  var children = main ? Array.from(main.children) : [];
+
+  var allTopicLinks = [];   // [{id, el}]
+  var unitBlocks = [];      // [{block, panel}]
+  var currentTopics = [];
+  var pendingUnit = null;
+
+  function flushUnit(){
+    if(!pendingUnit || !list) return;
+    var navId = 'nav-' + pendingUnit.id;
+
+    var block = document.createElement('div');
+    block.className = 'unit-block';
+
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'unit-toggle';
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-controls', navId);
+
+    var numSpan = document.createElement('span');
+    numSpan.className = 'num';
+    numSpan.textContent = pendingUnit.num;
+
+    var titleSpan = document.createElement('span');
+    titleSpan.textContent = pendingUnit.title;
+
+    var car = document.createElement('span');
+    car.className = 'car';
+    car.setAttribute('aria-hidden', 'true');
+    car.style.marginLeft = 'auto';
+    car.textContent = '▾';
+
+    toggle.appendChild(numSpan);
+    toggle.appendChild(titleSpan);
+    toggle.appendChild(car);
+
+    var panel = document.createElement('div');
+    panel.className = 'unit-topics open';
+    panel.id = navId;
+
+    currentTopics.forEach(function(t){
+      var a = document.createElement('a');
+      a.href = '#' + t.id;
+      var n = document.createElement('span');
+      n.className = 'n';
+      n.textContent = t.num;
+      a.appendChild(n);
+      a.appendChild(document.createTextNode(t.title));
+      a.dataset.search = (t.num + ' ' + t.title).toLocaleLowerCase('tr-TR');
+      panel.appendChild(a);
+      allTopicLinks.push({id: t.id, el: a});
+    });
+
+    toggle.addEventListener('click', function(){
+      var isOpen = panel.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      car.textContent = isOpen ? '▾' : '▸';
+    });
+
+    block.appendChild(toggle);
+    block.appendChild(panel);
+    list.appendChild(block);
+    unitBlocks.push({block: block, panel: panel});
+  }
+
+  children.forEach(function(node){
+    if(node.classList && node.classList.contains('unit-divider')){
+      flushUnit();
+      currentTopics = [];
+      var h2 = node.querySelector('h2');
+      var numAttr = node.id.replace('u', '');
+      pendingUnit = {
+        id: node.id,
+        num: numAttr.padStart(2, '0'),
+        title: h2 ? h2.textContent.trim() : ''
+      };
+    } else if(node.classList && node.classList.contains('topics-wrap')){
+      var arts = node.querySelectorAll('article.topic');
+      arts.forEach(function(a){
+        var numEl = a.querySelector('.t-num');
+        var h3 = a.querySelector('h3');
+        currentTopics.push({
+          id: a.id,
+          num: numEl ? numEl.textContent.trim() : '',
+          title: h3 ? h3.textContent.trim() : ''
+        });
+      });
+    }
+  });
+  flushUnit();
+
+  /* =========================================================
+     2) Kenar çubuğunda konu arama / filtreleme
+     ========================================================= */
+  var searchInput = document.getElementById('tocSearch');
+  var emptyMsg = document.getElementById('tocEmpty');
+  if(searchInput){
+    searchInput.addEventListener('input', function(){
+      var q = searchInput.value.trim().toLocaleLowerCase('tr-TR');
+      var anyVisible = false;
+      unitBlocks.forEach(function(u){
+        var unitHasMatch = !q;
+        u.panel.querySelectorAll('a').forEach(function(a){
+          var match = !q || (a.dataset.search || '').indexOf(q) !== -1;
+          a.classList.toggle('no-match', !match);
+          if(match) unitHasMatch = true;
+        });
+        u.block.classList.toggle('no-match', !unitHasMatch);
+        if(unitHasMatch) anyVisible = true;
+        if(q) u.panel.classList.add('open');
+      });
+      if(emptyMsg) emptyMsg.classList.toggle('show', q.length > 0 && !anyVisible);
+    });
+  }
+
+  /* =========================================================
+     3) Kaydırma-izleme: okunan konuyu kenar çubuğunda vurgular
+     ========================================================= */
+  var topicEls = Array.from(document.querySelectorAll('article.topic'));
+  if('IntersectionObserver' in window && topicEls.length){
+    var activeLink = null;
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        var link = allTopicLinks.filter(function(l){ return l.id === entry.target.id; })[0];
+        if(!link) return;
+        if(activeLink) activeLink.el.classList.remove('active');
+        link.el.classList.add('active');
+        activeLink = link;
+        if(typeof link.el.scrollIntoView === 'function'){
+          link.el.scrollIntoView({block: 'nearest'});
+        }
+      });
+    }, {rootMargin: '-8% 0px -82% 0px', threshold: 0});
+    topicEls.forEach(function(el){ observer.observe(el); });
+  }
+
+  /* =========================================================
+     4) Kendini Sına Modu: çözümler dokununca/tıklanınca açılır
+     ========================================================= */
+  var quizToggle = document.getElementById('quizToggle');
+  var solutionBoxes = Array.from(document.querySelectorAll('.box.solution'));
+
+  function setQuizMode(on){
+    document.body.classList.toggle('quiz-mode', on);
+    solutionBoxes.forEach(function(box){
+      if(on){
+        box.setAttribute('role', 'button');
+        box.setAttribute('tabindex', '0');
+        box.setAttribute('aria-label', 'Çözümü göster');
+      } else {
+        box.removeAttribute('role');
+        box.removeAttribute('tabindex');
+        box.removeAttribute('aria-label');
+        box.classList.remove('revealed');
+      }
+    });
+  }
+  if(quizToggle){
+    quizToggle.addEventListener('change', function(){ setQuizMode(quizToggle.checked); });
+  }
+  document.addEventListener('click', function(e){
+    if(!document.body.classList.contains('quiz-mode')) return;
+    var box = e.target.closest('.box.solution');
+    if(box) box.classList.add('revealed');
+  });
+  document.addEventListener('keydown', function(e){
+    if(!document.body.classList.contains('quiz-mode')) return;
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var box = e.target.closest ? e.target.closest('.box.solution') : null;
+    if(box){ e.preventDefault(); box.classList.add('revealed'); }
+  });
+
+  /* =========================================================
+     5) Mobil kenar çubuğu aç/kapat
+     ========================================================= */
+  var menuBtn = document.getElementById('menuBtn');
+  var tocNav = document.getElementById('tocNav');
+  if(menuBtn && tocNav){
+    menuBtn.addEventListener('click', function(){
+      var isOpen = tocNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    document.addEventListener('click', function(e){
+      if(e.target.closest('nav.toc a') && window.innerWidth <= 900){
+        tocNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && tocNav.classList.contains('open')){
+        tocNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.focus();
+      }
+    });
+  }
+
+  /* =========================================================
+     6) Okuma ilerleme çubuğu
+     ========================================================= */
+  var progressBar = document.getElementById('progressBar');
+  if(progressBar){
+    var ticking = false;
+    var updateProgress = function(){
+      var h = document.documentElement;
+      var scrollable = h.scrollHeight - h.clientHeight;
+      var pct = scrollable > 0 ? (h.scrollTop / scrollable) * 100 : 0;
+      progressBar.style.width = pct + '%';
+      ticking = false;
+    };
+    document.addEventListener('scroll', function(){
+      if(!ticking){ requestAnimationFrame(updateProgress); ticking = true; }
+    }, {passive: true});
+    updateProgress();
+  }
+
+  /* =========================================================
+     7) Başa dön düğmesi
+     ========================================================= */
+  var backToTop = document.getElementById('backToTop');
+  if(backToTop){
+    document.addEventListener('scroll', function(){
+      backToTop.classList.toggle('visible', window.scrollY > 900);
+    }, {passive: true});
+    backToTop.addEventListener('click', function(){
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  }
+
+  /* =========================================================
+     8) KaTeX render — tek geçiş yeterlidir: bu script </body>
+        sonunda çalıştığından tüm DOM ve KaTeX betikleri zaten
+        hazırdır; ayrıca DOMContentLoaded/load ile tekrarlamaya
+        gerek yoktur.
+     ========================================================= */
+  if(window.renderMathInElement){
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false,
+      strict: false
+    });
+  }
+
+})();
+</script>
+
+<script>
+/* =========================================================
+   AI SORU ÜRETİCİ (Groq) — bağımsız modül
+   Mevcut sayfa script'inden izole çalışır, hiçbir değişkeni
+   paylaşmaz; sadece DOM ID'leri ve KaTeX'in global
+   renderMathInElement fonksiyonu üzerinden konuşur.
+   ========================================================= */
+(function(){
+  'use strict';
+
+  var LS_KEY = 'tytmat_ai_groq_key';
+  var LS_DIFF_KEY = 'tytmat_ai_difficulty';
+  var GROQ_MODEL = 'llama-3.3-70b-versatile';
+  var GROQ_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
+
+  /* ---------- ÖSYM TYT Matematik zorluk analizi ----------
+     Bu tanımlar rastgele "kolay/orta/zor de" talimatları değil;
+     ÖSYM'nin TYT Matematik testindeki gerçek soru dağılımına
+     (adım sayısı, senaryo uzunluğu, çeldirici mantığı, hedef
+     çözüm süresi) dayanır. Modele bu somut kriterleri veriyoruz
+     ki "zor" gerçekten çok adımlı/çok kavramlı, "kolay" gerçekten
+     tek adımlı çıksın — sadece cümle uzunluğu değişmesin.
+     ========================================================= */
+  var DIFFICULTY_PROFILES = {
+    kolay: {
+      label: 'Kolay',
+      not: '45-60 sn hedef',
+      aciklama:
+        "ÖSYM TYT Matematik testinin genelde ilk 10-13 sorusuna denk gelen giriş seviyesi. " +
+        "Tanım: TEK bir kavramı, TEK adımda test eden bir sorudur — öğrenci metni okuyup tek bir kural/formülü " +
+        "doğrudan uygulayarak sonuca ulaşmalı; bir ara sonuç bulup onu başka bir işlemde kullanması GEREKMEMELİ. " +
+        "Senaryo kısa ve nettir (2-3 cümle), soruda çözüme dahil olmayan fazladan/dikkat dağıtıcı sayısal veri YOKTUR. " +
+        "Sayılar, işlemi zorlaştırmayacak şekilde (küçük, yuvarlak) seçilir. 5 şık birbirinden belirgin şekilde ayrışır; " +
+        "çeldiriciler basit ve tipik hatalara (işlem sırası, işaret hatası gibi) dayanır ve kolayca elenebilir. " +
+        "Hedef çözüm süresi: 45-60 saniye."
+    },
+    orta: {
+      label: 'Orta',
+      not: '75-100 sn hedef',
+      aciklama:
+        "ÖSYM TYT Matematik testinin orta gövdesine (yaklaşık 14-30. sorular) denk gelen standart seviye. " +
+        "Tanım: İKİ adımlı bir çözüm gerektirir — önce bir ara değer/ilişki bulunur (bir oran, bir yüzde, bir bilinmeyen), " +
+        "sonra bu ara sonuç ikinci bir işlemde kullanılarak asıl cevaba ulaşılır. Senaryo orta uzunlukta bir paragraftır; " +
+        "öğrencinin metni dikkatle okuyup değişkenler arasındaki ilişkiyi kurması gerekir, ama ilişki gizli değil, " +
+        "metinden çıkarılabilir niteliktedir. 5 şıktan en az 2-3 tanesi GERÇEKÇİ çeldiricidir: öğrenci adımlardan " +
+        "birini atlarsa ya da yanlış uygularsa (örn. sadece ilk adımın ara sonucunu nihai cevap sanırsa) tam olarak " +
+        "o şıkka ulaşmalıdır — rastgele yanlış sayı OLMAMALI. Hedef çözüm süresi: 75-100 saniye."
+    },
+    zor: {
+      label: 'Zor',
+      not: '120-150 sn hedef',
+      aciklama:
+        "ÖSYM TYT Matematik testinin son bölümüne (yaklaşık 31-40. sorular) denk gelen, 'Yeni Nesil' felsefesinin " +
+        "en yoğun uygulandığı ileri seviye. Tanım: ÇOK adımlı bir çözüm zinciri gerektirir ve genellikle konu " +
+        "içindeki BİRDEN FAZLA kural/formülü/özel durumu aynı soru içinde birleştirir (örn. bir tanım + bir formül " +
+        "+ bir istisna/özel durum bir arada kullanılır). Senaryo uzun bir paragraftır; öğrenci önce durumu zihninde " +
+        "doğru modellemeli (hangi bilinmeyenin neyi temsil ettiğine karar vermeli), sonra bu modeli adım adım " +
+        "çözmelidir. Soru kökünde çözüme dahil OLMAYAN, sadece dikkat dağıtmak için verilmiş en az bir sayısal " +
+        "bilgi kırıntısı bulunmalıdır (ÖSYM'nin sık kullandığı bir teknik). 5 şıktan en az 3 tanesi sofistike " +
+        "çeldiricidir: öğrencinin çözümün yarısında durup ulaşacağı ara sonuca, ya da soruyu ters okuyup " +
+        "(örn. 'en az' yerine 'en çok' hesaplayıp) ulaşacağı sonuca denk gelmelidir — bunlar KISMEN DOĞRU mantık " +
+        "hatalarını yansıtmalı, rastgele sayı OLMAMALI. Hedef çözüm süresi: 120-150 saniye."
+    }
+  };
+
+  var fabBtn = document.getElementById('aiFabBtn');
+  var overlay = document.getElementById('aiModalOverlay');
+  var closeBtn = document.getElementById('aiModalClose');
+  var topicChip = document.getElementById('aiTopicChip');
+  var topicChipText = document.getElementById('aiTopicChipText');
+  var settingsBox = document.getElementById('aiSettingsBox');
+  var settingsState = document.getElementById('aiSettingsState');
+  var apiKeyInput = document.getElementById('aiApiKey');
+  var keyToggle = document.getElementById('aiKeyToggle');
+  var saveKeyBtn = document.getElementById('aiSaveKey');
+  var generateBtn = document.getElementById('aiGenerateBtn');
+  var generateBtnText = document.getElementById('aiGenerateBtnText');
+  var regenerateBtn = document.getElementById('aiRegenerateBtn');
+  var statusEl = document.getElementById('aiStatus');
+  var outputEl = document.getElementById('aiOutput');
+  var questionText = document.getElementById('aiQuestionText');
+  var hintBlock = document.getElementById('aiHintBlock');
+  var hintText = document.getElementById('aiHintText');
+  var hintToggle = document.getElementById('aiHintToggle');
+  var solutionBlock = document.getElementById('aiSolutionBlock');
+  var solutionText = document.getElementById('aiSolutionText');
+  var solutionToggle = document.getElementById('aiSolutionToggle');
+  var diffRow = document.getElementById('aiDiffRow');
+  var diffButtons = diffRow ? Array.from(diffRow.querySelectorAll('.ai-diff-btn')) : [];
+  var diffNote = document.getElementById('aiDiffNote');
+  var questionFlabel = document.querySelector('#aiQuestionBlock .flabel');
+
+  if(!fabBtn || !overlay) return; // gerekli DOM yoksa modülü sessizce devre dışı bırak
+
+  var selectedDifficulty = localStorage.getItem(LS_DIFF_KEY) || 'orta';
+  if(!DIFFICULTY_PROFILES[selectedDifficulty]) selectedDifficulty = 'orta';
+
+  function applyDifficultyUI(){
+    diffButtons.forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-diff') === selectedDifficulty);
+    });
+    if(diffNote) diffNote.textContent = DIFFICULTY_PROFILES[selectedDifficulty].not;
+  }
+  diffButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      selectedDifficulty = btn.getAttribute('data-diff');
+      localStorage.setItem(LS_DIFF_KEY, selectedDifficulty);
+      applyDifficultyUI();
+    });
+  });
+  applyDifficultyUI();
+
+  /* ---------- 1) Aktif konuyu sol menüden bul ---------- */
+  function getActiveTopicArticle(){
+    var activeLink = document.querySelector('.unit-topics a.active');
+    if(!activeLink) return null;
+    var href = activeLink.getAttribute('href') || '';
+    var id = href.replace('#', '');
+    if(!id) return null;
+    return document.getElementById(id);
+  }
+
+  function refreshTopicChip(){
+    var article = getActiveTopicArticle();
+    if(article){
+      var numEl = article.querySelector('.t-num');
+      var h3 = article.querySelector('h3');
+      var label = (numEl ? numEl.textContent.trim() + ' · ' : '') + (h3 ? h3.textContent.trim() : 'Konu');
+      topicChip.classList.remove('warn');
+      topicChipText.textContent = 'Aktif konu: ' + label;
+    } else {
+      topicChip.classList.add('warn');
+      topicChipText.textContent = 'Aktif konu algılanamadı — soldaki menüden bir konu seç, sonra tekrar dene.';
+    }
+  }
+
+  /* ---------- 2) API anahtarı ayarları (localStorage) ---------- */
+  function refreshSettingsState(){
+    var key = localStorage.getItem(LS_KEY);
+    if(key){
+      settingsState.textContent = '— kayıtlı ✓';
+      settingsState.classList.add('ok');
+    } else {
+      settingsState.textContent = '— ayarlanmadı';
+      settingsState.classList.remove('ok');
+    }
+  }
+
+  keyToggle.addEventListener('click', function(){
+    var isPw = apiKeyInput.type === 'password';
+    apiKeyInput.type = isPw ? 'text' : 'password';
+    keyToggle.textContent = isPw ? '🙈' : '👁';
+  });
+
+  saveKeyBtn.addEventListener('click', function(){
+    var val = apiKeyInput.value.trim();
+    if(val){
+      localStorage.setItem(LS_KEY, val);
+    } else {
+      localStorage.removeItem(LS_KEY);
+    }
+    refreshSettingsState();
+    settingsBox.removeAttribute('open');
+    showStatus(val ? 'Ayar kaydedildi. Artık soru üretebilirsin.' : 'Anahtar silindi.');
+  });
+
+  /* ---------- 3) Modal aç/kapat ---------- */
+  function openModal(){
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    apiKeyInput.value = localStorage.getItem(LS_KEY) || '';
+    refreshSettingsState();
+    refreshTopicChip();
+    closeBtn.focus();
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    fabBtn.focus();
+  }
+  fabBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  /* ---------- 4) Durum / hata / yükleniyor gösterimi ---------- */
+  function showStatus(msg){
+    statusEl.className = 'ai-status';
+    statusEl.textContent = msg || '';
+  }
+  function showError(msg){
+    statusEl.className = 'ai-status error';
+    statusEl.textContent = msg;
+  }
+  function setLoading(on){
+    generateBtn.disabled = on;
+    regenerateBtn.disabled = on;
+    generateBtnText.textContent = on ? 'Üretiliyor…' : 'Soru Üret';
+    if(on){
+      statusEl.className = 'ai-status loading';
+      statusEl.innerHTML = '<span class="ai-spin" aria-hidden="true"></span><span>Groq ile soru hazırlanıyor…</span>';
+    } else if(statusEl.classList.contains('loading')){
+      showStatus('');
+    }
+  }
+
+  function hideOutput(){
+    outputEl.hidden = true;
+    hintBlock.hidden = true;
+    solutionBlock.hidden = true;
+    hintToggle.textContent = 'İpucunu Göster';
+    hintToggle.setAttribute('aria-expanded', 'false');
+    solutionToggle.textContent = 'Çözümü Göster';
+    solutionToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  /* ---------- 5) Metni güvenli biçimde paragraflara çevir ---------- */
+  function textToHtml(str){
+    var esc = String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    var paragraphs = esc.split(/\n{2,}/).map(function(p){
+      return '<p>' + p.replace(/\n/g, '<br>') + '</p>';
+    });
+    return paragraphs.join('');
+  }
+
+  function renderOutput(data, difficulty){
+    if(questionFlabel){
+      var prof = DIFFICULTY_PROFILES[difficulty] || DIFFICULTY_PROFILES.orta;
+      questionFlabel.textContent = 'Soru · ' + prof.label + ' seviye';
+    }
+    questionText.innerHTML = textToHtml(data.soru);
+    hintText.innerHTML = textToHtml(data.ipucu);
+    solutionText.innerHTML = textToHtml(data.cozum);
+    outputEl.hidden = false;
+    if(window.renderMathInElement){
+      renderMathInElement(outputEl, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false,
+        strict: false
+      });
+    }
+    showStatus('');
+    outputEl.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+  }
+
+  /* ---------- 6) Sistem promptu ---------- */
+  function buildPrompt(topicText, difficulty){
+    var prof = DIFFICULTY_PROFILES[difficulty] || DIFFICULTY_PROFILES.orta;
+    return "Sen YKS (TYT) hazırlık sürecindeki öğrencilere soru hazırlayan, ÖSYM'nin 'Yeni Nesil' soru felsefesine ve TYT Matematik testinin zorluk dağılımına tam anlamıyla hakim uzman bir matematik öğretmenisin.\n" +
+"Öğrenci şu an sayfada şu konuyu çalışıyor:\n" +
+"\"\"\"\n" + topicText + "\n\"\"\"\n\n" +
+"Senden istenen: Öğrencinin okuduğu bu metindeki kurallara, formüllere ve senaryolara birebir sadık kalarak, KESİNLİKLE klasik işlem sorusu OLMAYAN, tam bir ÖSYM YENİ NESİL TYT sorusu üretmendir.\n\n" +
+"HEDEFLENEN ZORLUK SEVİYESİ: " + prof.label + "\n" +
+"Bu, sadece 'kolay/zor bir soru yaz' demek değildir. Bu seviyenin ÖSYM TYT sınavındaki GERÇEK karşılığı ve " +
+"somut, ölçülebilir nitelikleri şunlardır — üreteceğin soru bunlarla harfiyen örtüşmelidir:\n" +
+prof.aciklama + "\n\n" +
+"Sorunun genel özellikleri (tüm zorluk seviyeleri için ortak):\n" +
+"1. Doğrudan denklemi vermek yerine, problemi günlük hayattan bir senaryo (okuduğunu anlama ve modelleme gerektiren bir hikaye) içine gizle.\n" +
+"2. Öğrencinin metni okuyup matematiksel modeli kendisinin kurmasını sağla.\n" +
+"3. A, B, C, D, E şeklinde 5 şık ekle. Çeldiriciler yukarıda tarif edilen zorluk seviyesindeki mantığa göre kurgulanmalı; rastgele/anlamsız sayılar OLMAMALI.\n" +
+"4. Adım sayısı ve kavram birleştirme derecesi, yukarıdaki zorluk tanımıyla BİREBİR uyuşmalı — bu kısıtlamayı asla gevşetme. Örneğin 'kolay' istendiğinde çözümün iki adıma çıkması, ya da 'zor' istendiğinde çözümün tek adımda bitmesi kabul edilemez bir hatadır.\n\n" +
+"Üreteceğin soruda kullanacağın tüm matematiksel ifadeleri KaTeX uyumlu olarak tek dolar ($...$) veya çift dolar ($$...$$) arasına al.\n" +
+"Yanıtını kesinlikle başka hiçbir metin eklemeden, doğrudan aşağıdaki JSON formatında ver:\n" +
+'{"soru": "Hikayeli soru metni ve A, B, C, D, E şıkları", "ipucu": "Öğrenciyi doğru modele yönlendirecek ufak bir ipucu", "cozum": "Adım adım matematiksel çözüm ve doğru şıkkın belirtilmesi"}';
+  }
+
+  /* ---------- 7) Groq isteği ve JSON ayrıştırma ---------- */
+  function parseAiJson(content){
+    var cleaned = content.trim()
+      .replace(/^```json/i, '')
+      .replace(/^```/, '')
+      .replace(/```$/, '')
+      .trim();
+    var parsed;
+    try{
+      parsed = JSON.parse(cleaned);
+    }catch(e){
+      throw new Error('Yapay zekâ yanıtı ayrıştırılamadı. Lütfen tekrar dene.');
+    }
+    if(!parsed || !parsed.soru || !parsed.ipucu || !parsed.cozum){
+      throw new Error('Yanıt beklenen formatta değil (soru/ipucu/cozum eksik).');
+    }
+    return parsed;
+  }
+
+  async function callGroq(apiKey, topicText, difficulty){
+    var res = await fetch(GROQ_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + apiKey
+      },
+      body: JSON.stringify({
+        model: GROQ_MODEL,
+        temperature: 0.7,
+        response_format: {type: 'json_object'},
+        messages: [
+          {role: 'system', content: buildPrompt(topicText, difficulty)},
+          {role: 'user', content: 'Yukarıdaki talimatlara, özellikle hedeflenen zorluk seviyesi tanımına birebir uyarak şimdi bir soru üret.'}
+        ]
+      })
+    });
+
+    if(!res.ok){
+      var errBody = null;
+      try{ errBody = await res.json(); }catch(e){ /* yanıt JSON değilse yut */ }
+      var msg = (errBody && errBody.error && errBody.error.message) ? errBody.error.message : ('HTTP ' + res.status);
+      var httpErr = new Error(msg);
+      httpErr.status = res.status;
+      throw httpErr;
+    }
+
+    var json = await res.json();
+    var content = (json.choices && json.choices[0] && json.choices[0].message) ? json.choices[0].message.content : '';
+    if(!content) throw new Error('Groq boş bir yanıt döndürdü.');
+    return parseAiJson(content);
+  }
+
+  function errMessage(err){
+    if(err && err.status === 401) return 'API anahtarı geçersiz görünüyor. Lütfen Groq anahtarını kontrol et.';
+    if(err && err.status === 429) return 'Groq isteği sınırlandırıldı (rate limit). Birkaç saniye sonra tekrar dene.';
+    if(err && err.status >= 500) return 'Groq sunucularında geçici bir sorun var. Birkaç saniye sonra tekrar dene.';
+    if(err && err.message) return err.message;
+    return 'Beklenmeyen bir hata oluştu. Lütfen tekrar dene.';
+  }
+
+  /* ---------- 8) Soru üretme akışı ---------- */
+  async function generateQuestion(){
+    var apiKey = localStorage.getItem(LS_KEY) || '';
+    if(!apiKey){
+      showError('Önce API Ayarları bölümünden Groq anahtarını kaydetmelisin.');
+      settingsBox.setAttribute('open', '');
+      return;
+    }
+    var article = getActiveTopicArticle();
+    if(!article){
+      showError('Aktif konu bulunamadı. Lütfen soldaki menüden bir konu seçip tekrar dene.');
+      return;
+    }
+    var topicText = (article.innerText || article.textContent || '').trim();
+    if(!topicText){
+      showError('Konu metni okunamadı.');
+      return;
+    }
+
+    setLoading(true);
+    hideOutput();
+    try{
+      var data = await callGroq(apiKey, topicText, selectedDifficulty);
+      renderOutput(data, selectedDifficulty);
+    }catch(err){
+      showError(errMessage(err));
+    }finally{
+      setLoading(false);
+    }
+  }
+
+  generateBtn.addEventListener('click', generateQuestion);
+  regenerateBtn.addEventListener('click', generateQuestion);
+
+  hintToggle.addEventListener('click', function(){
+    var willShow = hintBlock.hidden;
+    hintBlock.hidden = !willShow;
+    hintToggle.textContent = willShow ? 'İpucunu Gizle' : 'İpucunu Göster';
+    hintToggle.setAttribute('aria-expanded', String(willShow));
+  });
+  solutionToggle.addEventListener('click', function(){
+    var willShow = solutionBlock.hidden;
+    solutionBlock.hidden = !willShow;
+    solutionToggle.textContent = willShow ? 'Çözümü Gizle' : 'Çözümü Göster';
+    solutionToggle.setAttribute('aria-expanded', String(willShow));
+  });
+
+  refreshSettingsState();
+})();
+</script>
+
+</body>
+</html>
